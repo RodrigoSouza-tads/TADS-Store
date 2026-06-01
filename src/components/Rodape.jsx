@@ -1,5 +1,11 @@
 function Rodape(){
-    return<small className="rodape">Rodrigo Souza -  2026</small>
+    return (
+        <footer className="rodape">
+            <p>Desenvolvido por Rodrigo Souza - &copy; 2026 TADS Store</p>
+            <small>Instituto Federal do Espírito Santo | TADS EAD</small>
+        </footer>
+    )
+    
 }
 
 export default Rodape;

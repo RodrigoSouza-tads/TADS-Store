@@ -1,16 +1,26 @@
 import Botao from "./Botao";
 import Selo from "./Selo";
+import formatarPreco from "../utils/formatarPreco";
 
 function ProdutoCard({ produto }) {
-    const { nome, preco, freteGratis } = produto;
-    const valor = typeof preco === "number"
-        ? preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
-        : "Preço indisponível";
+    const {
+        nome,
+        preco,
+        freteGratis
+    } = produto;
+
     return (
         <article className="produto-card">
             <h3>{nome}</h3>
-            <p className="preco">{valor}</p>
-            {freteGratis && <Selo texto="Frete grátis"/>}
+
+            <p className="preco">
+                {formatarPreco(preco)}
+            </p>
+
+            {freteGratis && (
+                <Selo texto="Frete grátis" />
+            )}
+
             <Botao texto="Comprar" />
         </article>
     );
