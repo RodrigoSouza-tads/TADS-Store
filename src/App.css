@@ -1,0 +1,20 @@
+.vitrine {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+gap: 16px;
+}
+.produto-card {
+border: 1px solid #e3e3e3; border-radius: 12px; padding: 16px;
+text-align: center;
+}
+.produto-card .thumb { font-size: 48px; }
+.produto-card .preco { font-weight: bold; color: #1f7a30;
+font-size: 1.15rem; }
+.produto-card .selo {
+display: inline-block; background: #e6f4ea; color: #1f7a30;
+font-size: .75rem; padding: 2px 8px; border-radius: 20px;
+}
+.produto-card button {
+margin-top: 10px; width: 100%; padding: 8px; border: 0;
+border-radius: 8px; background: #0b6e83; color: #fff; cursor: pointer;
+}
