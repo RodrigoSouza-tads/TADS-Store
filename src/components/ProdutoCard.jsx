@@ -21,7 +21,7 @@ function ProdutoCard({ produto }) {
                 <Selo texto="Frete grátis" />
             )}
 
-            <Botao texto="Comprar" />
+            <Botao texto="Comprar" aoClicar={() => {}}/>
         </article>
     );
 }

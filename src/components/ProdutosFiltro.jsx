@@ -1,4 +1,4 @@
-function ProdutoFiltro({
+function ProdutosFiltro({
     valor,
     opcoes,
     onChange,
@@ -27,4 +27,4 @@ function ProdutoFiltro({
     );
 }
 
-export default ProdutoFiltro;
+export default ProdutosFiltro;

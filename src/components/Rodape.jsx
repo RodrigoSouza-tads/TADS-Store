@@ -4,7 +4,7 @@ function Rodape(){
             <p>Desenvolvido por Rodrigo Souza - &copy; 2026 TADS Store</p>
             <small>Instituto Federal do Espírito Santo | TADS EAD</small>
         </footer>
-    )
+    );
     
 }
 

@@ -1,5 +1,5 @@
 function MenuNavegacao({
-    itens
+    itens = []
 }) {
     return (
         <nav className="menu-navegacao">

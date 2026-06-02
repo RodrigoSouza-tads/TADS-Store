@@ -1,11 +1,11 @@
 import Layout from "./components/Layout";
-import Vitrine from "./components/Vitrine";
+import Home from "./pages/Home";
 import "./App.css";
 
 function App() {
   return (
     <Layout>
-    <Vitrine />
+    <Home />
     </Layout>
   );
 }

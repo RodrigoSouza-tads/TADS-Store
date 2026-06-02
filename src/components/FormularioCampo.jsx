@@ -14,6 +14,7 @@ function FormularioCampo({
 
             <input
                 id={id}
+                name={id}
                 type={tipo}
                 value={valor}
                 placeholder={placeholder}
