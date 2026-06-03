@@ -1,20 +1,33 @@
 function CategoriaMenu({
-    categorias,
+    categorias = [],
     categoriaSelecionada,
     onSelecionarCategoria
 }) {
     return (
         <nav className="categoria-menu">
+            <button
+                type="button"
+                onClick={() =>
+                    onSelecionarCategoria("")
+                }
+            >
+                Todos
+            </button>
+
             {categorias.map((categoria) => (
                 <button
                     key={categoria}
                     type="button"
                     className={
-                        categoria === categoriaSelecionada
-                            ? "categoria-ativa"
+                        categoriaSelecionada === categoria
+                            ? "ativo"
                             : ""
                     }
-                    onClick={() => onSelecionarCategoria(categoria)}
+                    onClick={() =>
+                        onSelecionarCategoria(
+                            categoria
+                        )
+                    }
                 >
                     {categoria}
                 </button>

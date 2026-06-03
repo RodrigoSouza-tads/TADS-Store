@@ -1,41 +1,76 @@
 import { useEffect, useState } from "react";
 
+import BarraBusca from "../components/BarraBusca";
+import CategoriaMenu from "../components/CategoriaMenu";
 import Loading from "../components/Loading";
 import EmptyState from "../components/EmptyState";
 import ProdutosLista from "../components/ProdutosLista";
 
-import { buscarProdutos } from "../services/apiProdutos";
+import { buscarProdutos, buscarCategorias } from "../services/apiProdutos";
+
 
 function Home() {
     const [produtos, setProdutos] = useState([]);
+    const [busca, setBusca] = useState("");
+    const [categorias, setCategorias] = useState([]);
+    const [categoriaSelecionada, setCategoriaSelecionada] = useState("");
     const [loading, setLoading] = useState(true);
     const [erro, setErro] = useState(false);
 
-   useEffect(() => {
-        async function carregarProdutos() {
-            try {
-                const produtosApi =
-                    await buscarProdutos();
 
-                setProdutos(produtosApi);
+    async function carregarProdutos() {
+        try {
+            const produtosApi = await buscarProdutos();
 
-                console.log("Produtos carregados:");
-                console.log(produtosApi);
+            const categoriasApi =
+                buscarCategorias();
 
-            } catch (error) {
-                console.error(error);
-                setErro(true);
-            } finally {
-                setLoading(false);
-            }
+            setProdutos(produtosApi);
+            setCategorias(categoriasApi);
+
+        } catch (error) {
+            console.error(
+                "Erro ao carregar produtos:",
+                error
+            );
+
+            setErro(true);
+
+        } finally {
+            setLoading(false);
         }
+    }
 
+    useEffect(() => {
         carregarProdutos();
     }, []);
 
+    const produtosFiltrados =
+        produtos.filter((produto) => {
+            const atendeBusca =
+                produto.nome
+                    .toLowerCase()
+                    .includes(
+                        busca.toLowerCase()
+                    );
+
+            const atendeCategoria =
+                categoriaSelecionada === ""
+                    ? true
+                    : produto.categoria ===
+                      categoriaSelecionada;
+
+            return (
+                atendeBusca &&
+                atendeCategoria
+            );
+        });
+
     if (loading) {
         return (
-            <Loading mensagem="Carregando produtos..." />
+            <Loading
+                mensagem="Carregando produtos..."
+            />
         );
     }
 
@@ -48,21 +83,37 @@ function Home() {
         );
     }
 
-    if (produtos.length === 0) {
-        return (
-            <EmptyState
-                titulo="Nenhum produto encontrado"
-                descricao="Não existem produtos disponíveis."
-            />
-        );
-    }
-
     return (
         <section className="home">
-            <ProdutosLista produtos={produtos} />
+
+            <BarraBusca
+                valor={busca}
+                onChange={setBusca}
+            />
+
+            <CategoriaMenu
+                categorias={categorias}
+                categoriaSelecionada={
+                    categoriaSelecionada
+                }
+                onSelecionarCategoria={
+                    setCategoriaSelecionada
+                }
+            />            
+
+            {produtosFiltrados.length === 0 ? (
+                <EmptyState
+                    titulo="Nenhum produto encontrado"
+                    descricao="Tente outro termo de pesquisa."
+                />
+            ) : (
+                <ProdutosLista
+                    produtos={produtosFiltrados}
+                />
+            )}
+
         </section>
     );
 }
-
 
 export default Home;
