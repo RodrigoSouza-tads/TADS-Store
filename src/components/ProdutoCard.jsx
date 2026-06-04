@@ -7,6 +7,7 @@ import formatarPreco from "../utils/formatarPreco";
 function ProdutoCard({ produto }) {
     const {
         nome,
+        categoria,
         preco,
         imagem,
         avaliacao,
@@ -28,6 +29,9 @@ function ProdutoCard({ produto }) {
             />
 
             <h3>{nome}</h3>
+            <p className="categoria">
+                {categoria}
+            </p>
 
             <p className="preco">
                 {formatarPreco(preco)}

@@ -2,20 +2,20 @@ function MenuNavegacao({
     itens = []
 }) {
     return (
-        <nav className="menu-navegacao">
-            <ul>
-                {itens.map(({ texto, onClique }) => (
-                    <li key={texto}>
-                        <button
-                            type="button"
-                            onClick={onClique}
-                        >
-                            {texto}
-                        </button>
-                    </li>
-                ))}
-            </ul>
-        </nav>
+        <ul className="menu-navegacao">
+
+            {itens.map((item) => (
+                <li key={item}>
+                    <button
+                        type="button"
+                        className="menu-item"
+                    >
+                        {item}
+                    </button>
+                </li>
+            ))}
+
+        </ul>
     );
 }
 

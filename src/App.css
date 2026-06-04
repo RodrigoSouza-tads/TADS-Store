@@ -1,3 +1,392 @@
+/* ==========================================================
+   TADS STORE - DESIGN SYSTEM
+========================================================== */
+
+/* ======================================================
+    RESET E BASE
+====================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Ativa rolagem suave ao navegar por âncoras (#link) */
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+
+    /* ======================================================
+       TIPOGRAFIA
+    ====================================================== */
+
+    --font-family-base:
+        "Inter",
+        "Segoe UI",
+        sans-serif;
+
+    --font-family-heading:
+        "Poppins",
+        "Inter",
+        sans-serif;
+
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 2rem;
+    --font-size-3xl: 3rem;
+
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    --line-height-base: 1.5;
+    --line-height-heading: 1.2;
+
+
+    /* ======================================================
+       PALETA DE CORES
+    ====================================================== */
+
+    --color-primary: #2563eb;
+    --color-primary-hover: #1d4ed8;
+
+    --color-secondary: #14b8a6;
+    --color-secondary-hover: #0f766e;
+
+    --color-accent: #f97316;
+    --color-accent-hover: #ea580c;
+
+    --color-success: #22c55e;
+    --color-warning: #f59e0b;
+    --color-danger: #ef4444;
+
+
+    /* ======================================================
+       NEUTROS
+    ====================================================== */
+
+    --color-white: #ffffff;
+
+    --color-gray-50: #f9fafb;
+    --color-gray-100: #f3f4f6;
+    --color-gray-200: #e5e7eb;
+    --color-gray-300: #d1d5db;
+    --color-gray-400: #9ca3af;
+    --color-gray-500: #6b7280;
+    --color-gray-600: #4b5563;
+    --color-gray-700: #374151;
+    --color-gray-800: #1f2937;
+    --color-gray-900: #111827;
+
+
+    /* ======================================================
+       TEMA LIGHT
+    ====================================================== */
+
+    --color-background: var(--color-gray-50);
+
+    --color-surface: var(--color-white);
+
+    --color-text-primary:
+        var(--color-gray-900);
+
+    --color-text-secondary:
+        var(--color-gray-600);
+
+    --color-border:
+        var(--color-gray-200);
+
+
+    /* ======================================================
+       BORDAS E RAIOS
+    ====================================================== */
+
+    --radius-xs: 4px;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 999px;
+
+    --border-width: 1px;
+
+
+    /* ======================================================
+       SOMBRAS
+    ====================================================== */
+
+    --shadow-sm:
+        0 1px 2px rgba(0, 0, 0, 0.05);
+
+    --shadow-md:
+        0 4px 12px rgba(0, 0, 0, 0.08);
+
+    --shadow-lg:
+        0 8px 24px rgba(0, 0, 0, 0.12);
+
+    --shadow-xl:
+        0 12px 40px rgba(0, 0, 0, 0.15);
+
+
+    /* ======================================================
+       ESPAÇAMENTOS
+    ====================================================== */
+
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+
+
+    /* ======================================================
+       BOTÃO DE COMPRA
+    ====================================================== */
+
+    --button-buy-bg:
+        var(--color-primary);
+
+    --button-buy-bg-hover:
+        var(--color-primary-hover);
+
+    --button-buy-text:
+        var(--color-white);
+
+    --button-buy-radius:
+        var(--radius-md);
+
+
+    /* ======================================================
+       BOTÃO MENU
+    ====================================================== */
+
+    --button-menu-bg:
+        transparent;
+
+    --button-menu-text:
+        var(--color-text-primary);
+
+    --button-menu-bg-hover:
+        var(--color-gray-100);
+
+    --button-menu-radius:
+        var(--radius-full);
+
+
+    /* ======================================================
+       TRANSIÇÕES
+    ====================================================== */
+
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+/* ======================================================
+       TEMA DARK
+====================================================== */
+
+.dark-theme {
+
+    --color-background: #111827;
+
+    --color-surface: #1f2937;
+
+    --color-text-primary: #f9fafb;
+
+    --color-text-secondary: #d1d5db;
+
+    --color-border: #374151;
+
+    --shadow-sm:
+        0 1px 3px rgba(0, 0, 0, 0.3);
+
+    --shadow-md:
+        0 4px 12px rgba(0, 0, 0, 0.35);
+
+    --shadow-lg:
+        0 8px 24px rgba(0, 0, 0, 0.4);
+
+    --shadow-xl:
+        0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* ======================================================
+       BODY
+====================================================== */
+
+body {
+    font-family:
+        var(--font-family-base);
+
+    font-size:
+        var(--font-size-md);
+
+    line-height:
+        var(--line-height-base);
+
+    background:
+        var(--color-background);
+
+    color:
+        var(--color-text-primary);
+
+    transition:
+        var(--transition-normal);
+}
+
+
+/* ==========================================================
+   CABEÇALHO
+========================================================== */
+
+.cabecalho {
+    display: flex;
+    flex-direction: column;
+
+    background: var(--color-surface);
+
+    border-bottom:
+        var(--border-width)
+        solid
+        var(--color-border);
+
+    box-shadow:
+        var(--shadow-sm);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    width: 100%;
+}
+
+.cabecalho-container {
+    width: 100%;
+
+    max-width: 1440px;
+
+    margin: 0 auto;
+
+    padding:
+        var(--space-md);
+}
+
+.cabecalho-topo {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: var(--space-md);
+}
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-sm);
+
+    text-decoration: none;
+
+    color: var(--color-text-primary);
+}
+
+.logo-titulo {
+    font-family:
+        var(--font-family-heading);
+
+    font-size:
+        var(--font-size-lg);
+
+    font-weight:
+        var(--font-weight-bold);
+
+    line-height:
+        var(--line-height-heading);
+}
+
+.cabecalho-acoes {
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-sm);
+}
+
+.botao-menu {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    border: none;
+
+    border-radius:
+        var(--button-menu-radius);
+
+    background:
+        var(--button-menu-bg);
+
+    color:
+        var(--button-menu-text);
+
+    cursor: pointer;
+
+    transition:
+        var(--transition-fast);
+}
+
+.botao-menu:hover {
+    background:
+        var(--button-menu-bg-hover);
+}
+
+.botao-menu:focus-visible {
+    outline: 3px solid
+        var(--color-primary);
+
+    outline-offset: 2px;
+}
+
+.cabecalho-busca {
+    margin-top:
+        var(--space-md);
+}
+
+.cabecalho-navegacao {
+    margin-top:
+        var(--space-md);
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+}
+
+.cabecalho-navegacao::-webkit-scrollbar {
+    display: none;
+}
+
+.cabecalho-categorias {
+    display: flex;
+
+    gap: var(--space-sm);
+
+    min-width: max-content;
+}
+
 .produto-lista {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -7,18 +396,53 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    gap: 0.75rem;
+    gap: 1rem;
     padding: 1rem;
     border: 1px solid #ddd;
     border-radius: 12px;
+    background: #ffffff;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
     
 }
+
+.produto-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 8px 24px rgba(
+            0,
+            0,
+            0,
+            0.08
+        );
+}
+
+.produto-card-topo {
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
 .produto-card .produto-imagem {
     width: 100%;
-    height: 180px;
+    height: 220px;
     object-fit: contain;
     border-radius: 8px;
 }
+
+.produto-card h3 {
+    font-size: 1.rem;
+    line-height: 1.4;
+    min-height: 3rem;
+}
+
+.produto-card .categoria {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: -0.5rem;
+}
+
 .produto-card .preco { 
     font-weight: bold; 
     color: #1f7a30;
@@ -43,11 +467,7 @@
     cursor: pointer;
 }
 
-.produto-card-topo {
-    display: flex;
-    justify-content: flex-end;
-    background: transparent;
-}
+
 
 .botao-favorito {
     border: none;
@@ -79,4 +499,58 @@
 
 .banner-imagem img {
     max-width: 300px;
+}
+
+
+/* ==========================================================
+   MEDIA QUERIES min-width: 768px
+========================================================== */
+
+@media (min-width: 768px) {
+
+    .cabecalho-topo {
+        display: grid;
+
+        grid-template-columns:
+            auto
+            1fr
+            auto;
+
+        align-items: center;
+
+        gap: var(--space-lg);
+    }
+
+    .cabecalho-busca {
+        margin-top: 0;
+    }
+
+    .cabecalho-navegacao {
+        margin-top:
+            var(--space-lg);
+    }
+}
+
+
+/* ==========================================================
+   MEDIA QUERIES min-width: 1024px
+========================================================== */
+
+@media (min-width: 1024px) {
+
+    .cabecalho-container {
+        padding:
+            var(--space-md)
+            var(--space-xl);
+    }
+
+    .logo-titulo {
+        font-size:
+            var(--font-size-xl);
+    }
+
+    .cabecalho-acoes {
+        gap:
+            var(--space-md);
+    }
 }
