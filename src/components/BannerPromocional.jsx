@@ -1,21 +1,39 @@
+import Botao from "./Botao";
+
 function BannerPromocional({
     titulo,
     descricao,
     textoBotao,
-    onCliqueBotao
+    onCliqueBotao,
+    imagem
 }) {
     return (
         <section className="banner-promocional">
-            <h2>{titulo}</h2>
 
-            <p>{descricao}</p>
+            <div className="banner-conteudo">
 
-            <button
-                type="button"
-                onClick={onCliqueBotao}
-            >
-                {textoBotao}
-            </button>
+                <h2>{titulo}</h2>
+
+                <p>{descricao}</p>
+
+                {textoBotao && (
+                    <Botao
+                        texto={textoBotao}
+                        onClick={onCliqueBotao}
+                    />
+                )}
+
+            </div>
+
+            {imagem && (
+                <div className="banner-imagem">
+                    <img
+                        src={imagem}
+                        alt={titulo}
+                    />
+                </div>
+            )}
+
         </section>
     );
 }

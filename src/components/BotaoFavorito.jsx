@@ -1,17 +1,21 @@
-function BotaoFavorito({
-    favorito,
-    onAlternarFavorito
-}) {
+import { useState } from "react";
+
+function BotaoFavorito() {
+    const [favorito, setFavorito] =
+        useState(false);
+
+    function alternarFavorito() {
+        setFavorito(
+            (valorAtual) => !valorAtual
+        );
+    }
+
     return (
         <button
             type="button"
-            className="favorito-botao"
-            onClick={onAlternarFavorito}
-            aria-label={
-                favorito
-                    ? "Remover dos favoritos"
-                    : "Adicionar aos favoritos"
-            }
+            className="botao-favorito"
+            onClick={alternarFavorito}
+            aria-label="Favoritar produto"
         >
             {favorito ? "❤️" : "🤍"}
         </button>

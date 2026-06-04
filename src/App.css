@@ -1,20 +1,82 @@
 .produto-lista {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-gap: 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
 }
 .produto-card {
-border: 1px solid #e3e3e3; border-radius: 12px; padding: 16px;
-text-align: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    
 }
-.produto-card .thumb { font-size: 48px; }
-.produto-card .preco { font-weight: bold; color: #1f7a30;
-font-size: 1.15rem; }
+.produto-card .produto-imagem {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+.produto-card .preco { 
+    font-weight: bold; 
+    color: #1f7a30;
+    font-size: 1.15rem; 
+}
 .produto-card .selo {
-display: inline-block; background: #e6f4ea; color: #1f7a30;
-font-size: .75rem; padding: 2px 8px; border-radius: 20px;
+    display: inline-block; 
+    background: #e6f4ea; 
+    color: #1f7a30;
+    font-size: .75rem; 
+    padding: 2px 8px; 
+    border-radius: 20px;
 }
-.produto-card button {
-margin-top: 10px; width: 100%; padding: 8px; border: 0;
-border-radius: 8px; background: #0b6e83; color: #fff; cursor: pointer;
+.produto-card .btn {
+    margin-top: 10px; 
+    width: 100%; 
+    padding: 8px; 
+    border: 0;
+    border-radius: 8px;
+    background: #0b6e83;
+    color: #fff; 
+    cursor: pointer;
+}
+
+.produto-card-topo {
+    display: flex;
+    justify-content: flex-end;
+    background: transparent;
+}
+
+.botao-favorito {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1.4rem;
+}
+
+.banner-promocional {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.banner-conteudo {
+    max-width: 600px;
+}
+
+.banner-conteudo h2 {
+    margin-bottom: 1rem;
+}
+
+.banner-conteudo p {
+    margin-bottom: 1.5rem;
+}
+
+.banner-imagem img {
+    max-width: 300px;
 }

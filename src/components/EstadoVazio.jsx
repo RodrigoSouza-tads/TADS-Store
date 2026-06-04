@@ -1,4 +1,4 @@
-function EmptyState({
+function EstadoVazio({
     titulo = "Nenhum resultado encontrado",
     descricao = "Tente realizar uma nova busca."
 }) {
@@ -10,4 +10,4 @@ function EmptyState({
     );
 }
 
-export default EmptyState;
+export default EstadoVazio;

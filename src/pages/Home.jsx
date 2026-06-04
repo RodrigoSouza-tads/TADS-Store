@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 
 import BarraBusca from "../components/BarraBusca";
 import CategoriaMenu from "../components/CategoriaMenu";
-import Loading from "../components/Loading";
-import EmptyState from "../components/EmptyState";
+import Carregando from "../components/Carregando";
+import EstadoVazio from "../components/EstadoVazio";
 import ProdutosLista from "../components/ProdutosLista";
+import BannerPromocional from "../components/BannerPromocional";
 
 import { buscarProdutos, buscarCategorias } from "../services/apiProdutos";
 
@@ -14,7 +15,7 @@ function Home() {
     const [busca, setBusca] = useState("");
     const [categorias, setCategorias] = useState([]);
     const [categoriaSelecionada, setCategoriaSelecionada] = useState("");
-    const [loading, setLoading] = useState(true);
+    const [carregando, setCarregando] = useState(true);
     const [erro, setErro] = useState(false);
 
 
@@ -37,7 +38,7 @@ function Home() {
             setErro(true);
 
         } finally {
-            setLoading(false);
+            setCarregando(false);
         }
     }
 
@@ -66,9 +67,9 @@ function Home() {
             );
         });
 
-    if (loading) {
+    if (carregando) {
         return (
-            <Loading
+            <Carregando
                 mensagem="Carregando produtos..."
             />
         );
@@ -76,7 +77,7 @@ function Home() {
 
     if (erro) {
         return (
-            <EmptyState
+            <EstadoVazio
                 titulo="Erro ao carregar produtos"
                 descricao="Tente novamente mais tarde."
             />
@@ -85,6 +86,22 @@ function Home() {
 
     return (
         <section className="home">
+
+            <BannerPromocional
+                titulo="Tecnologia para seu dia a dia"
+                descricao="
+                    Encontre notebooks,
+                    smartphones, tablets e acessórios
+                    com preços especiais.
+                "
+                textoBotao="Ver ofertas"
+                onCliqueBotao={() =>
+                    window.scrollTo({
+                        top: 600,
+                        behavior: "smooth"
+                    })
+                }
+            />
 
             <BarraBusca
                 valor={busca}
@@ -102,7 +119,7 @@ function Home() {
             />            
 
             {produtosFiltrados.length === 0 ? (
-                <EmptyState
+                <EstadoVazio
                     titulo="Nenhum produto encontrado"
                     descricao="Tente outro termo de pesquisa."
                 />

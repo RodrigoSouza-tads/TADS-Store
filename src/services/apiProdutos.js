@@ -19,7 +19,7 @@ function adaptarProduto(produto) {
         imagens: produto.images,
         estoque: produto.stock,
         marca: produto.brand,
-        freteGratis: false
+        freteGratis: produto.price >= 500
     };
 }
 

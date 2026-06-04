@@ -1,4 +1,4 @@
-function Loading({ mensagem = "Carregando..." }) {
+function Carregando({ mensagem = "Carregando..." }) {
     return (
         <div className="loading">
             <p>{mensagem}</p>
@@ -6,4 +6,4 @@ function Loading({ mensagem = "Carregando..." }) {
     );
 }
 
-export default Loading;
+export default Carregando;
