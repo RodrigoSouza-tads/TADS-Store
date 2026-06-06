@@ -1,4 +1,5 @@
 import { useState } from "react";
+import IconeFavorito from "./IconeFavorito";
 
 function BotaoFavorito() {
     const [favorito, setFavorito] =
@@ -15,9 +16,16 @@ function BotaoFavorito() {
             type="button"
             className="botao-favorito"
             onClick={alternarFavorito}
-            aria-label="Favoritar produto"
+            aria-label={
+                favorito
+                    ? "Remover dos favoritos"
+                    : "Adicionar aos favoritos"
+            }
         >
-            {favorito ? "❤️" : "🤍"}
+            <IconeFavorito 
+                preenchido={favorito}
+            />
+
         </button>
     );
 }

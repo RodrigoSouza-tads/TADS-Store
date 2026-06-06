@@ -10,9 +10,10 @@ import BannerPromocional from "../components/BannerPromocional";
 import { buscarProdutos, buscarCategorias } from "../services/apiProdutos";
 
 
-function Home() {
+function Home({
+    busca = ""
+}) {
     const [produtos, setProdutos] = useState([]);
-    const [busca, setBusca] = useState("");
     const [categorias, setCategorias] = useState([]);
     const [categoriaSelecionada, setCategoriaSelecionada] = useState("");
     const [carregando, setCarregando] = useState(true);
@@ -83,7 +84,7 @@ function Home() {
             />
         );
     }
-
+    console.log("Busca:", busca);
     return (
         <section className="home">
 
@@ -101,11 +102,6 @@ function Home() {
                         behavior: "smooth"
                     })
                 }
-            />
-
-            <BarraBusca
-                valor={busca}
-                onChange={setBusca}
             />
 
             <CategoriaMenu

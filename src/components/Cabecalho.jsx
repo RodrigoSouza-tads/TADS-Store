@@ -1,6 +1,14 @@
+import { useTema } from "../contexts/TemaContext";
+import Logo from "./Logo";
 import BarraBusca from "./BarraBusca";
-import CarrinhoIcone from "./CarrinhoIcone";
+import BotaoTema from "./BotaoTema";
+import BotaoFavoritoMenu from "./BotaoFavoritoMenu";
+import BotaoUsuario from "./BotaoUsuario";
+import BotaoCarrinho from "./BotaoCarrinho";
 import MenuNavegacao from "./MenuNavegacao";
+
+
+
 
 function Cabecalho({
     titulo,
@@ -9,6 +17,9 @@ function Cabecalho({
     itensMenu = [],
     quantidadeCarrinho = 0
 }) {
+
+    const {tema, alternarTema} = useTema();
+
     return (
         <header className="cabecalho">
 
@@ -16,11 +27,7 @@ function Cabecalho({
 
                 <div className="cabecalho-topo">
 
-                    <div className="logo">
-                        <h1 className="logo-titulo">
-                            {titulo}
-                        </h1>
-                    </div>
+                    <Logo altura={56} />
 
                     <div className="cabecalho-busca">
                         <BarraBusca
@@ -31,10 +38,17 @@ function Cabecalho({
 
                     <div className="cabecalho-acoes">
 
-                        <CarrinhoIcone
-                            quantidadeItens={
-                                quantidadeCarrinho
-                            }
+                        <BotaoFavoritoMenu />
+
+                        <BotaoCarrinho
+                            quantidadeItens={quantidadeCarrinho}
+                        />
+
+                        <BotaoUsuario/>
+
+                        <BotaoTema     
+                            tema={tema}
+                            alternarTema={alternarTema}
                         />
 
                     </div>

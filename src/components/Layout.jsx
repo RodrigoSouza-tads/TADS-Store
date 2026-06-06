@@ -4,7 +4,7 @@ import Rodape from "./Rodape";
 function Layout({ children }) {
     return (
         <div className="app">
-        <Cabecalho titulo="TADS Store"/>
+        <Cabecalho/>
         <main>{children}</main>
         <Rodape />
         </div>
