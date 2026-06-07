@@ -84,7 +84,7 @@ function Home({
             />
         );
     }
-    console.log("Busca:", busca);
+    
     return (
         <section className="home">
 

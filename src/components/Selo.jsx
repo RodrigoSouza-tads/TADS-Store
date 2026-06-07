@@ -4,7 +4,7 @@ function Selo({
 }) {
     return (
         <span
-            className={`selo selo-${cor}`}
+            className="selo"
         >
             {texto}
         </span>

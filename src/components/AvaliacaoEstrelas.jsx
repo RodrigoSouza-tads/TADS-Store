@@ -1,4 +1,8 @@
-function AvaliacaoEstrelas({ nota = 0 }) {
+import IconeEstrela from "./IconeEstrela";
+
+function AvaliacaoEstrelas({
+    nota = 0
+}) {
 
     const estrelasPreenchidas =
         Math.round(nota);
@@ -6,21 +10,25 @@ function AvaliacaoEstrelas({ nota = 0 }) {
     return (
         <div className="avaliacao-estrelas">
 
-            {Array.from(
+                {Array.from(
                 { length: 5 },
-                (_, indice) => (
-                    <span key={indice}>
-                        {
-                            indice < estrelasPreenchidas
-                                ? "★"
-                                : "☆"
-                        }
-                    </span>
-                )
+                (_, indice) => {
+
+                    const preenchida =
+                        indice < estrelasPreenchidas;
+
+                    return (
+                        <IconeEstrela 
+                        key={indice}
+                        indice={indice}
+                        preenchida={preenchida}
+                        />
+                    );
+                }
             )}
 
+
             <span className="nota">
-                {" "}
                 ({nota.toFixed(1)})
             </span>
 

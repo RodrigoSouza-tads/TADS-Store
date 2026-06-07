@@ -1,10 +1,13 @@
 import { useTema } from "../contexts/TemaContext";
+import { useState } from "react";
 import Logo from "./Logo";
 import BarraBusca from "./BarraBusca";
 import BotaoTema from "./BotaoTema";
 import BotaoFavoritoMenu from "./BotaoFavoritoMenu";
 import BotaoUsuario from "./BotaoUsuario";
 import BotaoCarrinho from "./BotaoCarrinho";
+import BotaoToggle from "./BotaoToggle";
+import MenuToggle from "./MenuToggle";
 import MenuNavegacao from "./MenuNavegacao";
 
 
@@ -19,6 +22,7 @@ function Cabecalho({
 }) {
 
     const {tema, alternarTema} = useTema();
+    const [menuAberto, setMenuAberto] = useState(false);
 
     return (
         <header className="cabecalho">
@@ -38,18 +42,56 @@ function Cabecalho({
 
                     <div className="cabecalho-acoes">
 
-                        <BotaoFavoritoMenu />
+                        <div className="cabecalho-menu-mobile">
+                            <BotaoToggle
+                                aberto={menuAberto}
+                                onToggle={() =>
+                                    setMenuAberto(!menuAberto)
+                                }
+                            />
+                            <MenuToggle
+                                aberto={menuAberto}
+                            >
 
-                        <BotaoCarrinho
-                            quantidadeItens={quantidadeCarrinho}
-                        />
+                                <BotaoFavoritoMenu />
 
-                        <BotaoUsuario/>
+                                <BotaoCarrinho
+                                    quantidadeItens={
+                                        quantidadeCarrinho
+                                    }
+                                />
 
-                        <BotaoTema     
-                            tema={tema}
-                            alternarTema={alternarTema}
-                        />
+                                <BotaoUsuario />
+
+                                <BotaoTema
+                                    tema={tema}
+                                    alternarTema={
+                                        alternarTema
+                                    }
+                                />
+
+                            </MenuToggle>
+                        </div>
+                        <div className="cabecalho-menu-desktop">
+                            
+                             <BotaoFavoritoMenu />
+
+                            <BotaoCarrinho
+                                quantidadeItens={
+                                    quantidadeCarrinho
+                                }
+                            />
+
+                            <BotaoUsuario />
+
+                            <BotaoTema
+                                tema={tema}
+                                alternarTema={
+                                    alternarTema
+                                }
+                            />
+                        </div>            
+
 
                     </div>
 

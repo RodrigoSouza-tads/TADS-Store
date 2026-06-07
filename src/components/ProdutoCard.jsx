@@ -1,4 +1,4 @@
-import Botao from "./Botao";
+import BotaoComprar from "./BotaoComprar";
 import Selo from "./Selo";
 import Avaliacao from "./AvaliacaoEstrelas";
 import BotaoFavorito from "./BotaoFavorito";
@@ -6,6 +6,7 @@ import formatarPreco from "../utils/formatarPreco";
 
 function ProdutoCard({ produto }) {
     const {
+        id,
         nome,
         categoria,
         preco,
@@ -14,36 +15,54 @@ function ProdutoCard({ produto }) {
         freteGratis
     } = produto;
 
+   
     return (
         <article className="produto-card">
 
 
             <div className="produto-card-topo">
+
+                
+
                 <BotaoFavorito />
+
+            </div>
+            
+            <div className="produto-card-imagem">
+
+                <img className="produto-imagem"
+                    src={imagem}
+                    alt={nome}
+                    loading="lazy"
+                />
+
             </div>
 
-            <img className="produto-imagem"
-                src={imagem}
-                alt={nome}
-                loading="lazy"
-            />
+            <div className="produto-card-informacoes">
 
-            <h3>{nome}</h3>
-            <p className="categoria">
-                {categoria}
-            </p>
+                <h3 className="produto-nome">
+                    {nome}
+                </h3>
 
-            <p className="preco">
-                {formatarPreco(preco)}
-            </p>
+                <Avaliacao nota={avaliacao} />
 
-            {freteGratis && (
-                <Selo texto="Frete grátis" />
-            )}
+                <p className="produto-preco">
+                    {formatarPreco(preco)}
+                </p>
+                <div className="selo-frete-gratis">
+                    {freteGratis && (<Selo texto="Frete grátis" />)}
+                </div>
+                
 
-            <Avaliacao nota={avaliacao} />
+            </div>
 
-            <Botao texto="Comprar" aoClicar={() => {}}/>
+            <div className="produto-card-botao">
+                 <BotaoComprar texto="Comprar" aoClicar={() => {}}/>   
+
+            </div>
+
+            
+                
         </article>
     );
 }
