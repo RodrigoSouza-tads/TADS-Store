@@ -373,12 +373,33 @@
     outline: none;
 }
 
+/* ==========================================================
+   LISTA DE PRODUTOS
+========================================================== */
 
- 
+.produtos-carousel {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scroll-behavior: smooth;
+}
+.produtos-carousel .produto-card {
+    flex: 0 0 260px;
+}
+
+.produtos-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.produtos-carousel {
+    scrollbar-width: none;
+}
+
 
 .produto-lista {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 2fr));
     gap: 16px;
 }
 

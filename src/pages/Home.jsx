@@ -6,13 +6,20 @@ import Carregando from "../components/Carregando";
 import EstadoVazio from "../components/EstadoVazio";
 import ProdutosLista from "../components/ProdutosLista";
 import BannerPromocional from "../components/BannerPromocional";
+import CategoriaLinha from "../components/CategoriaLinha";
 
-import { buscarProdutos, buscarCategorias } from "../services/apiProdutos";
+import { 
+    buscarProdutos, 
+    buscarCategorias, 
+    buscarProdutosPorCategoria,
+    nomesCategorias 
+} from "../services/apiProdutos";
 
 
 function Home({
     busca = ""
 }) {
+    //const [produtosPorCategoria,setProdutosPorCategoria] = useState({});
     const [produtos, setProdutos] = useState([]);
     const [categorias, setCategorias] = useState([]);
     const [categoriaSelecionada, setCategoriaSelecionada] = useState("");
@@ -46,6 +53,17 @@ function Home({
     useEffect(() => {
         carregarProdutos();
     }, []);
+
+    const produtosPorCategoria =
+    categorias.map((categoria) => ({
+        categoria,
+        produtos:
+            produtos.filter(
+                (produto) =>
+                    produto.categoria ===
+                    categoria
+            )
+    }));
 
     const produtosFiltrados =
         produtos.filter((produto) => {
@@ -113,6 +131,21 @@ function Home({
                     setCategoriaSelecionada
                 }
             />            
+
+            {
+                produtosPorCategoria.map(
+                    ({
+                        categoria,
+                        produtos
+                    }) => (
+                        <CategoriaLinha
+                            key={categoria}
+                            titulo={nomesCategorias[categoria]}
+                            produtos={produtos}
+                        />
+                    )
+                )
+            }
 
             {produtosFiltrados.length === 0 ? (
                 <EstadoVazio

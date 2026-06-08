@@ -38,15 +38,45 @@ async function buscarCategoria(categoria) {
 
     return dados.products.map(adaptarProduto);
 }
-
-export async function buscarProdutos() {
+async function respostasCategorias() {
     const respostasCategorias = await Promise.all(
         categorias.map(buscarCategoria)
     );
+    return respostasCategorias;
+}
 
-    const produtos = respostasCategorias.flat();
+export async function buscarProdutos() {
 
-    return produtos;
+
+    const produtos =
+        await respostasCategorias();
+
+    return produtos.flat();
+}
+
+export async function buscarProdutosPorCategoria() {
+
+    const respostas =
+        await respostasCategorias();
+
+    const produtosPorCategoria =
+        categorias.reduce(
+            (
+                resultado,
+                categoria,
+                indice
+            ) => {
+
+                resultado[categoria] =
+                    respostas[indice];
+
+                return resultado;
+
+            },
+            {}
+        );
+
+    return produtosPorCategoria;
 }
 
 export async function buscarProdutoPorId(id) {
@@ -68,3 +98,10 @@ export async function buscarProdutoPorId(id) {
 export function buscarCategorias() {
     return categorias;
 }
+
+export const nomesCategorias = {
+    "laptops": "Notebooks",
+    "smartphones": "Smartphones",
+    "tablets": "Tablets",
+    "mobile-accessories": "Acessórios"
+};
