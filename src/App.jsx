@@ -6,6 +6,7 @@ import Cabecalho from "./components/Cabecalho";
 import Home from "./pages/Home";
 
 import "./App.css";
+import ResultadosPesquisa from "./pages/ResultadosPesquisa";
 
 function App() {
 
@@ -22,6 +23,10 @@ function App() {
       <Home
         busca={busca}
       />
+
+      <ResultadosPesquisa
+        busca={busca}
+      /> 
 
     </TemaProvider>
   );

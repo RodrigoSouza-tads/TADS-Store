@@ -4,7 +4,7 @@ function ProdutosLista({
     produtos
 }) {
     return (
-        <section className="lista-produtos">
+        <section className="produto-lista">
             {produtos.map((produto) => (
                 <ProdutoCard
                     key={produto.id}

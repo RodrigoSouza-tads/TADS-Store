@@ -1,7 +1,7 @@
 import ProdutoCard from "./ProdutoCard";
 
 function ProdutosCarousel({
-    produtos
+    produtos = []
 }) {
     return (
         <div className="produtos-carousel">

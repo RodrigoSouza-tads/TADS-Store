@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
 
-import BarraBusca from "../components/BarraBusca";
 import CategoriaMenu from "../components/CategoriaMenu";
 import Carregando from "../components/Carregando";
 import EstadoVazio from "../components/EstadoVazio";
-import ProdutosLista from "../components/ProdutosLista";
 import BannerPromocional from "../components/BannerPromocional";
 import CategoriaLinha from "../components/CategoriaLinha";
 
 import { 
-    buscarProdutos, 
-    buscarCategorias, 
     buscarProdutosPorCategoria,
     nomesCategorias 
 } from "../services/apiProdutos";
@@ -19,23 +15,17 @@ import {
 function Home({
     busca = ""
 }) {
-    //const [produtosPorCategoria,setProdutosPorCategoria] = useState({});
-    const [produtos, setProdutos] = useState([]);
-    const [categorias, setCategorias] = useState([]);
-    const [categoriaSelecionada, setCategoriaSelecionada] = useState("");
+    const [produtosPorCategoria,setProdutosPorCategoria] = useState({});
     const [carregando, setCarregando] = useState(true);
     const [erro, setErro] = useState(false);
 
 
     async function carregarProdutos() {
         try {
-            const produtosApi = await buscarProdutos();
+            const produtosApi = await buscarProdutosPorCategoria();
 
-            const categoriasApi =
-                buscarCategorias();
-
-            setProdutos(produtosApi);
-            setCategorias(categoriasApi);
+            setProdutosPorCategoria(produtosApi);
+            console.log("Produtos por categoria:", produtosApi);
 
         } catch (error) {
             console.error(
@@ -53,38 +43,6 @@ function Home({
     useEffect(() => {
         carregarProdutos();
     }, []);
-
-    const produtosPorCategoria =
-    categorias.map((categoria) => ({
-        categoria,
-        produtos:
-            produtos.filter(
-                (produto) =>
-                    produto.categoria ===
-                    categoria
-            )
-    }));
-
-    const produtosFiltrados =
-        produtos.filter((produto) => {
-            const atendeBusca =
-                produto.nome
-                    .toLowerCase()
-                    .includes(
-                        busca.toLowerCase()
-                    );
-
-            const atendeCategoria =
-                categoriaSelecionada === ""
-                    ? true
-                    : produto.categoria ===
-                      categoriaSelecionada;
-
-            return (
-                atendeBusca &&
-                atendeCategoria
-            );
-        });
 
     if (carregando) {
         return (
@@ -106,57 +64,45 @@ function Home({
     return (
         <section className="home">
 
-            <BannerPromocional
-                titulo="Tecnologia para seu dia a dia"
-                descricao="
-                    Encontre notebooks,
-                    smartphones, tablets e acessórios
-                    com preços especiais.
-                "
-                textoBotao="Ver ofertas"
-                onCliqueBotao={() =>
-                    window.scrollTo({
-                        top: 600,
-                        behavior: "smooth"
-                    })
-                }
-            />
+            <div className="conteiner-banner-promocional">
+                <BannerPromocional
+                    titulo="Tecnologia para seu dia a dia"
+                    descricao="
+                        Encontre notebooks,
+                        smartphones, tablets e acessórios
+                        com preços especiais.
+                    "
+                    textoBotao="Ver ofertas"
+                    onCliqueBotao={() =>
+                        window.scrollTo({
+                            top: 600,
+                            behavior: "smooth"
+                        })
+                    }
+                />
+            </div>
 
-            <CategoriaMenu
-                categorias={categorias}
-                categoriaSelecionada={
-                    categoriaSelecionada
-                }
-                onSelecionarCategoria={
-                    setCategoriaSelecionada
-                }
-            />            
+            
+            <div className="conteiner-categoria-produtos">
+                {Object.entries(
+                    produtosPorCategoria
+                ).map(
+                    ([categoria, produtos]) => (
 
-            {
-                produtosPorCategoria.map(
-                    ({
-                        categoria,
-                        produtos
-                    }) => (
                         <CategoriaLinha
                             key={categoria}
-                            titulo={nomesCategorias[categoria]}
+                            titulo={
+                                nomesCategorias[
+                                    categoria
+                                ]
+                            }
                             produtos={produtos}
                         />
-                    )
-                )
-            }
 
-            {produtosFiltrados.length === 0 ? (
-                <EstadoVazio
-                    titulo="Nenhum produto encontrado"
-                    descricao="Tente outro termo de pesquisa."
-                />
-            ) : (
-                <ProdutosLista
-                    produtos={produtosFiltrados}
-                />
-            )}
+                    )
+                )}
+            </div>
+
 
         </section>
     );
