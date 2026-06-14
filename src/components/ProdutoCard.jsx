@@ -2,7 +2,9 @@ import BotaoComprar from "./BotaoComprar";
 import Selo from "./Selo";
 import Avaliacao from "./AvaliacaoEstrelas";
 import BotaoFavorito from "./BotaoFavorito";
+import IconeFreteGratis from "./IconeFreteGratis";
 import formatarPreco from "../utils/formatarPreco";
+import formatarDesconto from "../utils/formatarDesconto";
 
 function ProdutoCard({ produto }) {
     const {
@@ -12,6 +14,7 @@ function ProdutoCard({ produto }) {
         preco,
         imagem,
         avaliacao,
+        desconto,
         freteGratis
     } = produto;
 
@@ -22,7 +25,7 @@ function ProdutoCard({ produto }) {
 
             <div className="produto-card-topo">
 
-                
+                {freteGratis && <IconeFreteGratis/>}
 
                 <BotaoFavorito />
 
@@ -49,9 +52,6 @@ function ProdutoCard({ produto }) {
                 <p className="produto-preco">
                     {formatarPreco(preco)}
                 </p>
-                <div className="selo-frete-gratis">
-                    {freteGratis && (<Selo texto="Frete grátis" />)}
-                </div>
                 
 
             </div>

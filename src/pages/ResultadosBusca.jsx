@@ -15,7 +15,7 @@ import {
 } from "../services/apiProdutos";
 
 
-function ResultadosPesquisa({
+function ResultadosBusca({
     busca = ""
 }) {
     const [produtos, setProdutos] = useState([]);
@@ -111,4 +111,4 @@ function ResultadosPesquisa({
     );
 }
 
-export default ResultadosPesquisa;
+export default ResultadosBusca;

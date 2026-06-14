@@ -4,7 +4,7 @@ import CategoriaMenu from "../components/CategoriaMenu";
 import Carregando from "../components/Carregando";
 import EstadoVazio from "../components/EstadoVazio";
 import BannerPromocional from "../components/BannerPromocional";
-import CategoriaLinha from "../components/CategoriaLinha";
+import GaleriaProdutoCategoria from "../components/GaleriaProdutoCategoria";
 
 import { 
     buscarProdutosPorCategoria,
@@ -84,23 +84,16 @@ function Home({
 
             
             <div className="conteiner-categoria-produtos">
-                {Object.entries(
-                    produtosPorCategoria
-                ).map(
-                    ([categoria, produtos]) => (
 
-                        <CategoriaLinha
-                            key={categoria}
-                            titulo={
-                                nomesCategorias[
-                                    categoria
-                                ]
-                            }
-                            produtos={produtos}
-                        />
+                <GaleriaProdutoCategoria
+                    produtosPorCategoria={
+                        produtosPorCategoria
+                    }
+                    nomesCategorias={
+                        nomesCategorias
+                    }
+                />
 
-                    )
-                )}
             </div>
 
 

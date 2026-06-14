@@ -19,13 +19,14 @@ function adaptarProduto(produto) {
         imagens: produto.images,
         estoque: produto.stock,
         marca: produto.brand,
+        desconto: produto.discountPercentage,
         freteGratis: produto.price >= 500
     };
 }
 
 async function buscarCategoria(categoria) {
     const resposta = await fetch(
-        `${API_URL}/category/${categoria}?limit=5`
+        `${API_URL}/category/${categoria}?limit=10`
     );
 
     if (!resposta.ok) {
