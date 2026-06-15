@@ -5,6 +5,7 @@ import BotaoFavorito from "./BotaoFavorito";
 import IconeFreteGratis from "./IconeFreteGratis";
 import formatarPreco from "../utils/formatarPreco";
 import formatarDesconto from "../utils/formatarDesconto";
+import { Link } from "react-router-dom";
 
 function ProdutoCard({ produto }) {
     const {
@@ -20,50 +21,53 @@ function ProdutoCard({ produto }) {
 
    
     return (
-        <article className="produto-card">
-
-
-            <div className="produto-card-topo">
-
-                {freteGratis && <IconeFreteGratis/>}
-
-                <BotaoFavorito />
-
-            </div>
+        <Link to={`/produto/${produto.id}`}>
             
-            <div className="produto-card-imagem">
+            <article className="produto-card">
 
-                <img className="produto-imagem"
-                    src={imagem}
-                    alt={nome}
-                    loading="lazy"
-                />
 
-            </div>
+                <div className="produto-card-topo">
 
-            <div className="produto-card-informacoes">
+                    {freteGratis && <IconeFreteGratis/>}
 
-                <h3 className="produto-nome">
-                    {nome}
-                </h3>
+                    <BotaoFavorito />
 
-                <Avaliacao nota={avaliacao} />
-
-                <p className="produto-preco">
-                    {formatarPreco(preco)}
-                </p>
+                </div>
                 
+                <div className="produto-card-imagem">
 
-            </div>
+                    <img className="produto-imagem"
+                        src={imagem}
+                        alt={nome}
+                        loading="lazy"
+                    />
 
-            <div className="produto-card-botao">
-                 <BotaoComprar texto="Comprar" aoClicar={() => {}}/>   
+                </div>
 
-            </div>
+                <div className="produto-card-informacoes">
 
-            
-                
-        </article>
+                    <h3 className="produto-nome">
+                        {nome}
+                    </h3>
+
+                    <Avaliacao nota={avaliacao} />
+
+                    <p className="produto-preco">
+                        {formatarPreco(preco)}
+                    </p>
+                    
+
+                </div>
+
+                <div className="produto-card-botao">
+                    <BotaoComprar texto="Comprar" aoClicar={() => {}}/>   
+
+                </div>
+
+            </article>
+
+        </Link>
+
     );
 }
 

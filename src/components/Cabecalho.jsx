@@ -9,6 +9,7 @@ import BotaoCarrinho from "./BotaoCarrinho";
 import BotaoToggle from "./BotaoToggle";
 import MenuToggle from "./MenuToggle";
 import MenuNavegacao from "./MenuNavegacao";
+import { Link } from "react-router-dom";
 
 
 
@@ -34,10 +35,14 @@ function Cabecalho({
                     <Logo altura={56} />
 
                     <div className="cabecalho-busca">
-                        <BarraBusca
-                            valor={busca}
-                            onChange={onBuscar}
-                        />
+
+                        <Link to="/resultadosbusca">
+                            <BarraBusca
+                                valor={busca}
+                                onChange={onBuscar}
+                             />
+                        </Link>
+
                     </div>
 
                     <div className="cabecalho-acoes">

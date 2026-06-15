@@ -16,7 +16,7 @@ import {
 
 
 function ResultadosBusca({
-    busca = ""
+    busca
 }) {
     const [produtos, setProdutos] = useState([]);
     const [categorias, setCategorias] = useState([]);

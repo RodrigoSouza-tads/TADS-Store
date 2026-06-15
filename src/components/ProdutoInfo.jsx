@@ -1,37 +1,67 @@
-import AvaliacaoEstrelas from "./AvaliacaoEstrelas";
+import BotaoComprar from "./BotaoComprar";
+import Selo from "./Selo";
+import Avaliacao from "./AvaliacaoEstrelas";
+import BotaoFavorito from "./BotaoFavorito";
+import IconeFreteGratis from "./IconeFreteGratis";
+import formatarPreco from "../utils/formatarPreco";
+import formatarDesconto from "../utils/formatarDesconto";
+import { Link } from "react-router-dom";
 
-function ProdutoInfo({
-    nome,
-    preco,
-    descricao,
-    avaliacao
-}) {
-    const valorFormatado = typeof preco === "number"
-        ? preco.toLocaleString(
-            "pt-BR",
-            {
-                style: "currency",
-                currency: "BRL"
-            }
-        )
-        : "Preço indisponível";
-
+function ProdutoInfo({ produto }) {
+    const {
+        id,
+        nome,
+        categoria,
+        preco,
+        imagem,
+        imagens,
+        avaliacao,
+        desconto,
+        freteGratis
+    } = produto; 
+    
     return (
-        <section className="produto-info">
-            <h1>{nome}</h1>
+            <article className="produto-card-info">
 
-            <AvaliacaoEstrelas
-                nota={avaliacao}
-            />
 
-            <p className="produto-info-preco">
-                {valorFormatado}
-            </p>
+                <div className="produto-card-topo">
 
-            <p className="produto-info-descricao">
-                {descricao}
-            </p>
-        </section>
+                    {freteGratis && <IconeFreteGratis/>}
+
+                    <BotaoFavorito />
+
+                </div>
+                
+                <div className="produto-card-galeria-imagem">
+
+                    <img className="produto-imagem"
+                        src={imagem}
+                        alt={nome}
+                        loading="lazy"
+                    />
+
+                </div>
+
+                <div className="produto-card-informacoes">
+
+                    <h3 className="produto-nome">
+                        {nome}
+                    </h3>
+
+                    <Avaliacao nota={avaliacao} />
+
+                    <p className="produto-preco">
+                        {formatarPreco(preco)}
+                    </p>
+
+                </div>
+
+                <div className="produto-card-botao">
+                    <BotaoComprar texto="Comprar" aoClicar={() => {}}/>   
+
+                </div>
+
+            </article>
     );
 }
 
