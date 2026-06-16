@@ -1,5 +1,4 @@
 import BotaoComprar from "./BotaoComprar";
-import Selo from "./Selo";
 import Avaliacao from "./AvaliacaoEstrelas";
 import BotaoFavorito from "./BotaoFavorito";
 import IconeFreteGratis from "./IconeFreteGratis";
@@ -21,22 +20,28 @@ function ProdutoCard({ produto }) {
 
    
     return (
-        <Link to={`/produto/${produto.id}`}>
-            
-            <article className="produto-card">
+               
+        <article className="produto-card">
 
+            <div className="produto-card-topo">
 
-                <div className="produto-card-topo">
+                {freteGratis && (
+                    <IconeFreteGratis />
+                )}
 
-                    {freteGratis && <IconeFreteGratis/>}
+                <BotaoFavorito />
 
-                    <BotaoFavorito />
+            </div>
 
-                </div>
-                
+            <Link
+                to={`/produto/${id}`}
+                className="link-sem-estilo"
+            >
+
                 <div className="produto-card-imagem">
 
-                    <img className="produto-imagem"
+                    <img
+                        className="produto-imagem"
                         src={imagem}
                         alt={nome}
                         loading="lazy"
@@ -50,23 +55,28 @@ function ProdutoCard({ produto }) {
                         {nome}
                     </h3>
 
-                    <Avaliacao nota={avaliacao} />
+                    <Avaliacao
+                        nota={avaliacao}
+                    />
 
                     <p className="produto-preco">
                         {formatarPreco(preco)}
                     </p>
-                    
 
                 </div>
 
-                <div className="produto-card-botao">
-                    <BotaoComprar texto="Comprar" aoClicar={() => {}}/>   
+            </Link>
 
-                </div>
+            <div className="produto-card-botao">
 
-            </article>
+                <BotaoComprar
+                    texto="Comprar"
+                    aoClicar={() => {}}
+                />
 
-        </Link>
+            </div>
+
+        </article>
 
     );
 }

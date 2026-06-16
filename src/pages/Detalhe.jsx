@@ -36,7 +36,7 @@ function Detalhe() {
 
     useEffect(() => {
         carregarProduto();
-    }, []);
+    }, [id]);
 
     if (carregando) {
         return (
@@ -55,10 +55,30 @@ function Detalhe() {
         );
     }
 
+    if (!produto && !carregando) {
+    return (
+        <EstadoVazio
+            titulo="Produto não encontrado"
+            descricao="O produto solicitado não existe."
+        />
+    );
+}
+
     return (
         <article className="detalhe">
-            <Link to="/">← Voltar</Link>
-            <ProdutoInfo produto={produto}/>
+
+            <div className="detalhe-container">
+                <Link 
+                    to="/"
+                    className="botao-detalhe-voltar"
+                >
+                    ← Voltar para a loja
+                </Link>
+
+                <ProdutoInfo produto={produto}/>
+
+            </div>
+
         </article>
     );
 }

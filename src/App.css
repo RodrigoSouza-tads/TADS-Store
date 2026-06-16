@@ -113,9 +113,89 @@
     min-width: max-content;
 }
 
+/* ==========================================================
+   BARRA DE BUSCA
+========================================================== */
+.barra-busca {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    width: 100%;
+    height: 48px;
+    padding: 0 var(--space-md);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    transition:
+        border-color 0.2s ease, 
+        box-shadow 0.2s ease;
+}
+
+.barra-busca:focus-within {
+    border-color:var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.icone-barra-busca {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    stroke:var(--color-text-secondary);
+    stroke-width: 2;
+    fill: none;
+}
+
+.barra-busca-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color:var(--color-text-primary);
+    font-size:var(--font-size-md);
+    font-family:var(--font-family-text);
+}
+.barra-busca-input::placeholder {
+    color:
+        var(--color-text-secondary);
+}
+
+.barra-busca-input:focus {
+    outline: none;
+}
 
 /* ==========================================================
-   BOTOES E BADGES
+   BANNER PROMOCIONAL
+========================================================== */  
+
+.banner-promocional {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.banner-conteudo {
+    max-width: 600px;
+}
+
+.banner-conteudo h2 {
+    margin-bottom: 1rem;
+}
+
+.banner-conteudo p {
+    margin-bottom: 1.5rem;
+}
+
+.banner-imagem{
+    width: calc(150px + 20vw);
+    
+}
+
+
+
+/* ==========================================================
+   BOTOES, BADGES E ICONES E NOTAS
 ========================================================== */   
 .botao-menu {
     display: flex;
@@ -331,6 +411,22 @@
     transform: none;
 }
 
+/* BOTAO DETALHE VOLTAR */
+
+.botao-detalhe-voltar {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    transition: color 0.2s ease;
+}
+
+.botao-detalhe-voltar:hover {
+    color: var(--color-primary);
+}
+
 /* FRETE GRATIS */
 
 .icone-frete-gratis {
@@ -355,57 +451,50 @@
     flex-shrink: 0;
 }
 
-/* ==========================================================
-   BARRA DE BUSCA
-========================================================== */
-.barra-busca {
+.selo-frete-gratis {
+    display: inline-block; 
+    background: var(--color-surface); 
+    color: var(--color-success);
+    font-size: var(--font-size-sm); 
+    font-weight: var(--font-weight-medium);
+    padding: 2px 8px; 
+    border-radius: var(--radius-sm);
+}
+
+/* AVALIACAO DE ESTRELAS */
+
+.avaliacao-estrelas {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
-    width: 100%;
-    height: 48px;
-    padding: 0 var(--space-md);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-full);
-    transition:
-        border-color 0.2s ease, 
-        box-shadow 0.2s ease;
+    gap: 0.25rem;
 }
 
-.barra-busca:focus-within {
-    border-color:var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-}
-
-.icone-barra-busca {
-    width: 20px;
-    height: 20px;
+.estrela {
     flex-shrink: 0;
-    stroke:var(--color-text-secondary);
+    fill: transparent;
+    stroke: var(--color-border);
     stroke-width: 2;
-    fill: none;
+    transition:
+        fill 0.2s ease,
+        transform 0.2s ease;
 }
 
-.barra-busca-input {
-    flex: 1;
-    border: none;
-    background: transparent;
-    color:var(--color-text-primary);
-    font-size:var(--font-size-md);
-    font-family:var(--font-family-text);
-}
-.barra-busca-input::placeholder {
-    color:
-        var(--color-text-secondary);
+.estrela.preenchida {
+    fill: var(--color-accent);
+    stroke: var(--color-accent);
 }
 
-.barra-busca-input:focus {
-    outline: none;
+/* NOTA DA AVALIAÇÃO */
+
+.nota {
+    margin-left: 0.25rem;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
 }
+
 
 /* ==========================================================
-   HOME
+   PAGINA HOME E SEUS ELEMENTOS
 ========================================================== */  
 
 .home {
@@ -425,15 +514,8 @@
     flex-direction: column;
     gap: 2.5rem;*/
 }
-.resultados-busca{
-    width: 100%;
-    max-width: var(--container-max-width);
-    margin: 0 auto;
-    padding: 0 var(--container-padding);
-}
-/* ==========================================================
-   LISTA DE PRODUTOS
-========================================================== */
+
+/* PRODUTO CAROUSEL */
 
 .produtos-carousel {
     display: grid;
@@ -453,16 +535,7 @@
     display: none;
 }
 
-
-.produto-lista {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 2fr));
-    gap: var(--space-md);
-}
-
-/* ==========================================================
-   PRODUTOS
-========================================================== */  
+/* PRODUTO CARD */
 
 .produto-card {
     display: flex;
@@ -543,74 +616,166 @@
     color: var(--color-text-primary-primary);
 }
 
-.avaliacao-estrelas {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
+/* ==========================================================
+   PAGINA RESULTADOS BUSCA E LISTA DE PRODUTOS FILTRADOS
+========================================================== */  
+.resultados-busca{
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
 }
 
-.estrela {
+.produto-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 2fr));
+    gap: var(--space-md);
+}
+
+
+/* ==========================================================
+   PAGINA DETALHE E INFORMAÇÕES DO PRODUTO
+========================================================== */  
+.detalhe {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding:
+        var(--spacing-lg)
+        var(--spacing-md)
+        var(--spacing-3xl);
+}
+
+.detalhe-container {
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+
+/* GALERIA DE IMAGENS DO PRODUTO */
+ 
+.galeria-produto {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.galeria-produto-principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+    min-height: 320px;
+}
+
+.galeria-produto-imagem {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    object-fit: contain;
+}
+
+.galeria-produto-miniaturas {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+.galeria-produto-miniatura {
+    border: 2px solid transparent;
+    background: transparent;
+    border-radius: var(--radius-md);
+    padding: 0.25rem;
+    cursor: pointer;
     flex-shrink: 0;
-    fill: transparent;
-    stroke: var(--color-border);
-    stroke-width: 2;
-    transition:
-        fill 0.2s ease,
-        transform 0.2s ease;
+    transition: all 0.2s ease;
 }
 
-.estrela.preenchida {
-    fill: var(--color-accent);
-    stroke: var(--color-accent);
+.galeria-produto-miniatura:hover {
+    border-color: var(--color-primary);
 }
 
-.nota {
-    margin-left: 0.25rem;
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
+.galeria-produto-miniatura.ativa {
+    border-color: var(--color-primary);
 }
 
-.selo-frete-gratis {
-    display: inline-block; 
-    background: var(--color-surface); 
-    color: var(--color-success);
-    font-size: var(--font-size-sm); 
-    font-weight: var(--font-weight-medium);
-    padding: 2px 8px; 
-    border-radius: var(--radius-sm);
+.galeria-produto-miniatura img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
 }
 
+/* PRODUTO INFO */
 
-
-
-
-
-
-.banner-promocional {
+.produto-info {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    width: 100%;
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+}
+
+.produto-info-topo {
+    display: flex;
     justify-content: space-between;
-    padding: 2rem;
-    border-radius: 12px;
-    margin-bottom: 2rem;
+    align-items: center;
 }
 
-.banner-conteudo {
-    max-width: 600px;
+.produto-info-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
 }
 
-.banner-conteudo h2 {
-    margin-bottom: 1rem;
+.produto-info-conteudo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-md);
 }
 
-.banner-conteudo p {
-    margin-bottom: 1.5rem;
+.produto-info-nome {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: 1.2;
+    align-items: center;
 }
 
-.banner-imagem{
-    width: calc(150px + 20vw);
+.produto-info-preco {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    line-height: 1;
+    align-items: center;
+}
+
+.produto-info-descricao {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-md);
+    line-height: 1.7;
+    align-items: center;
+}
+
+.produto-info-botao {
+    margin-top: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: center;
     
 }
+
+
 
 
 /* ==========================================================
@@ -656,6 +821,17 @@
     .barra-busca {
         max-width: 600px;
     }
+
+    .produto-info-layout {
+
+        display: grid;
+        grid-template-columns:
+            minmax(320px, 520px)
+            minmax(320px, 520px);
+        justify-content: center;
+        gap: var(--spacing-2xl);
+    }
+
 }
 
 
@@ -672,5 +848,9 @@
 
     .cabecalho-acoes {
         gap: var(--space-md);
+    }
+
+    .barra-busca {
+        max-width: calc(50vw);
     }
 }

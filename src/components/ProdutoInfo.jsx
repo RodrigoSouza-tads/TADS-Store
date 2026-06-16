@@ -1,10 +1,10 @@
 import BotaoComprar from "./BotaoComprar";
-import Selo from "./Selo";
 import Avaliacao from "./AvaliacaoEstrelas";
 import BotaoFavorito from "./BotaoFavorito";
 import IconeFreteGratis from "./IconeFreteGratis";
 import formatarPreco from "../utils/formatarPreco";
 import formatarDesconto from "../utils/formatarDesconto";
+import GaleriaProduto from "./GaleriaProduto";
 import { Link } from "react-router-dom";
 
 function ProdutoInfo({ produto }) {
@@ -21,43 +21,45 @@ function ProdutoInfo({ produto }) {
     } = produto; 
     
     return (
-            <article className="produto-card-info">
+            <article className="produto-info">
 
 
-                <div className="produto-card-topo">
 
-                    {freteGratis && <IconeFreteGratis/>}
+                <div className="produto-info-layout">
 
-                    <BotaoFavorito />
-
-                </div>
-                
-                <div className="produto-card-galeria-imagem">
-
-                    <img className="produto-imagem"
-                        src={imagem}
-                        alt={nome}
-                        loading="lazy"
+                    <GaleriaProduto
+                        imagemPrincipal={imagens[0]}
+                        imagens={imagens}
+                        nome={nome}
                     />
 
-                </div>
+                    <div className="produto-info-conteudo">
 
-                <div className="produto-card-informacoes">
+                        <div className="produto-info-topo">
 
-                    <h3 className="produto-nome">
-                        {nome}
-                    </h3>
+                            {freteGratis && <IconeFreteGratis/>}
 
-                    <Avaliacao nota={avaliacao} />
+                            <BotaoFavorito />
 
-                    <p className="produto-preco">
-                        {formatarPreco(preco)}
-                    </p>
+                        </div>
 
-                </div>
+                        <h3 className="produto-info-nome">
+                            {nome}
+                        </h3>
 
-                <div className="produto-card-botao">
-                    <BotaoComprar texto="Comprar" aoClicar={() => {}}/>   
+                        <Avaliacao nota={avaliacao} />
+
+                        <p className="produto-info-preco">
+                            {formatarPreco(preco)}
+                        </p>
+
+
+                        <div className="produto-info-botao">
+                            <BotaoComprar texto="Comprar" aoClicar={() => {}}/>   
+
+                        </div>
+
+                     </div>
 
                 </div>
 
