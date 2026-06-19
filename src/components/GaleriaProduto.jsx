@@ -31,11 +31,11 @@ function GaleriaProduto({
                 />
 
             </div>
-
+           
             {imagens.length > 1 && (
 
-                <div
-                    className="galeria-produto-miniaturas"
+                <div className="galeria-produto-miniaturas"
+                    
                 >
 
                     {imagens.map(
@@ -76,7 +76,9 @@ function GaleriaProduto({
 
                 </div>
 
-            )}
+            )}                
+          
+
 
         </section>
     );

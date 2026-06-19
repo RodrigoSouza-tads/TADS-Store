@@ -1,5 +1,5 @@
 function formatarDesconto(desconto) {
-    const descontoNumeroDecinal = desconto/100;
+    const descontoNumeroDecinal = Number(desconto)/100;
     return typeof descontoNumeroDecinal === "number"
         ? descontoNumeroDecinal.toLocaleString(
             "pt-BR",

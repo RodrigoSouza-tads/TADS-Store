@@ -63,6 +63,10 @@ function ProdutoCard({ produto }) {
                         {formatarPreco(preco)}
                     </p>
 
+                    <span className="produto-desconto">
+                        {formatarDesconto(desconto)} Off
+                    </span>
+
                 </div>
 
             </Link>

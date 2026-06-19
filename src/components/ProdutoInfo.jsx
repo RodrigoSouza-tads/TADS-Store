@@ -2,20 +2,28 @@ import BotaoComprar from "./BotaoComprar";
 import Avaliacao from "./AvaliacaoEstrelas";
 import BotaoFavorito from "./BotaoFavorito";
 import IconeFreteGratis from "./IconeFreteGratis";
+import GaleriaProduto from "./GaleriaProduto";
+import ProdutoCaracteristicas from "./ProdutoCaracteristicas";
+import ProdutoAvaliacao from "./ProdutoAvaliacao";
+
 import formatarPreco from "../utils/formatarPreco";
 import formatarDesconto from "../utils/formatarDesconto";
-import GaleriaProduto from "./GaleriaProduto";
+
+
 import { Link } from "react-router-dom";
 
 function ProdutoInfo({ produto }) {
     const {
         id,
         nome,
+        descricao,
         categoria,
         preco,
-        imagem,
+        peso,
+        dimensao,
         imagens,
         avaliacao,
+        avaliacaoClientes,
         desconto,
         freteGratis
     } = produto; 
@@ -27,11 +35,11 @@ function ProdutoInfo({ produto }) {
 
                 <div className="produto-info-layout">
 
-                    <GaleriaProduto
-                        imagemPrincipal={imagens[0]}
-                        imagens={imagens}
-                        nome={nome}
-                    />
+                <GaleriaProduto
+                    imagemPrincipal={imagens[0]}
+                    imagens={imagens}
+                    nome={nome}
+                />
 
                     <div className="produto-info-conteudo">
 
@@ -47,12 +55,19 @@ function ProdutoInfo({ produto }) {
                             {nome}
                         </h3>
 
-                        <Avaliacao nota={avaliacao} />
+                        <Avaliacao 
+                            className="produto-info-avaliacao"
+                            nota={avaliacao} />
 
-                        <p className="produto-info-preco">
-                            {formatarPreco(preco)}
-                        </p>
-
+                        <div className="produto-info-valores">
+                            <p className="produto-info-preco">
+                                {formatarPreco(preco) } 
+                            </p>
+                            <span className="produto-info-desconto">
+                                {formatarDesconto(desconto)} de Desconto
+                            </span> 
+                        </div>
+                       
 
                         <div className="produto-info-botao">
                             <BotaoComprar texto="Comprar" aoClicar={() => {}}/>   
@@ -60,6 +75,17 @@ function ProdutoInfo({ produto }) {
                         </div>
 
                      </div>
+
+                    <ProdutoCaracteristicas
+                        peso={peso}
+                        dimensao={dimensao}
+                        categoria={categoria}
+                        descricao={descricao}
+                    />
+
+                    <ProdutoAvaliacao
+                        reviews={avaliacaoClientes}
+                    />
 
                 </div>
 

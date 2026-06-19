@@ -15,11 +15,14 @@ function adaptarProduto(produto) {
         descricao: produto.description,
         categoria: produto.category,
         avaliacao: produto.rating,
+        avaliacaoClientes: produto.reviews,
         imagem: produto.thumbnail,
         imagens: produto.images,
         estoque: produto.stock,
         marca: produto.brand,
         desconto: produto.discountPercentage,
+        peso: produto.weight,
+        dimensao:produto.dimensions,
         freteGratis: produto.price >= 500
     };
 }
