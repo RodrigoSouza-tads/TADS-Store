@@ -19,7 +19,7 @@ function Modal({
                         onClick={onFechar}
                         aria-label="Fechar modal"
                     >
-                        ×
+                        x
                     </button>
                 </header>
 

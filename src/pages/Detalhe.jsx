@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Carregando from "../components/Carregando";
 import EstadoVazio from "../components/EstadoVazio";
-import ProdutoInfo from "../components/ProdutoInfo"
+import ProdutoInfo from "../components/ProdutoInfo";
+import Breadcrumb from "../components/Breadcrumb"
 import { 
     buscarProdutoPorId 
 } from "../services/apiProdutos";
@@ -65,9 +66,24 @@ function Detalhe() {
 }
 
     return (
+        
         <article className="detalhe">
 
             <div className="detalhe-container">
+
+            <Breadcrumb
+                itens={[
+                    {
+                        texto: "Home",
+                        link: "/"
+                    },
+                    {
+                        texto: "Produto"
+                    }
+                ]}
+            />
+
+
                 <Link 
                     to="/"
                     className="botao-detalhe-voltar"

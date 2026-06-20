@@ -4,6 +4,7 @@ import BotaoFavorito from "./BotaoFavorito";
 import IconeFreteGratis from "./IconeFreteGratis";
 import formatarPreco from "../utils/formatarPreco";
 import formatarDesconto from "../utils/formatarDesconto";
+import { useCarrinho } from "../contexts/CarrinhoContext";
 import { Link } from "react-router-dom";
 
 function ProdutoCard({ produto }) {
@@ -18,7 +19,9 @@ function ProdutoCard({ produto }) {
         freteGratis
     } = produto;
 
-   
+   const { adicionarProduto } = useCarrinho();
+    console.log(useCarrinho());
+    
     return (
                
         <article className="produto-card">
@@ -75,9 +78,12 @@ function ProdutoCard({ produto }) {
 
                 <BotaoComprar
                     texto="Comprar"
-                    aoClicar={() => {}}
+                    onClick={() => {
+                        adicionarProduto(produto);
+                        console.log("Clique ProdutoCard");
+                    }}
                 />
-
+                
             </div>
 
         </article>

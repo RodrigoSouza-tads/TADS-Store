@@ -1,18 +1,31 @@
+import { Link } from "react-router-dom";
+
 function Breadcrumb({ itens }) {
     return (
         <nav className="breadcrumb" aria-label="Breadcrumb">
             {itens.map((item, indice) => (
-                <span key={item.texto}>
-                    {item.url ? (
-                        <a href={item.url}>
-                            {item.texto}
-                        </a>
+                <span 
+                    className="breadcrumb-item"
+                    key={item.texto}
+                >
+                    {item.link ? (
+                        <Link 
+                            className="breadcrumb-link" 
+                            to={item.link} 
+                        > 
+                            {item.texto} 
+                        </Link>
                     ) : (
                         <span>{item.texto}</span>
                     )}
 
                     {indice < itens.length - 1 && (
-                        <span> &gt; </span>
+                        <span
+                            className="breadcrumb-separador"
+                            aria-hidden="true"
+                        > 
+                            &gt; 
+                        </span>
                     )}
                 </span>
             ))}

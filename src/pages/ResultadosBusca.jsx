@@ -5,6 +5,7 @@ import CategoriaMenu from "../components/CategoriaMenu";
 import Carregando from "../components/Carregando";
 import EstadoVazio from "../components/EstadoVazio";
 import ProdutosLista from "../components/ProdutosLista";
+import Breadcrumb from "../components/Breadcrumb";
 
 
 import { 
@@ -92,7 +93,20 @@ function ResultadosBusca({
     }
     
     return (
-        <section className="resultados-busca">          
+        <section className="resultados-busca">  
+
+            <Breadcrumb
+                itens={[
+                    {
+                        texto: "Home",
+                        link: "/"
+                    },
+                    {
+                        texto: "Resultados"
+                    }
+                ]}
+            />
+
             <h2>Resultados da Busca</h2>
 
             {produtosFiltrados.length === 0 ? (

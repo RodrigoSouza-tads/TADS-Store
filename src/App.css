@@ -197,6 +197,40 @@
 /* ==========================================================
    BOTOES, BADGES E ICONES E NOTAS
 ========================================================== */   
+
+/* BREADCRUMB */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-lg);
+    font-size: var(--font-size-sm);
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.breadcrumb-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+
+.breadcrumb-atual {
+    color: var(--color-text);
+    font-weight: var(--font-weight-semibold);
+}
+
+.breadcrumb-separador {
+    color: var(--color-text-muted);
+}
+
+/* BOTAO MENU */
 .botao-menu {
     display: flex;
     align-items: center;
@@ -425,6 +459,27 @@
 
 .botao-detalhe-voltar:hover {
     color: var(--color-primary);
+}
+
+/* BOTAO LIXEIRA CARRINHO */
+
+.botao-remover-carrinho {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-xs);
+    border: none;
+    background: transparent;
+    color: var(--color-danger);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    transition: opacity 0.2s ease;
+}
+
+.botao-remover-carrinho-icone{
+    align-items:baseline;
+    justify-items: baseline;
 }
 
 /* FRETE GRATIS */
@@ -865,6 +920,99 @@
     margin-bottom: 0.75rem;
 }
 
+/* ==========================================================
+   PAGINA CARRINHO
+========================================================== */
+
+.pagina-carrinho {
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+}
+
+.carrinho-layout {
+    display: grid;    
+    gap: var(--space-xl);
+}
+
+.carrinho-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+.carrinho-item-imagem{
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: contain;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrinho-item-info{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.carrinho-item-nome{
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: 1.2;
+    align-items: center;
+}
+
+.carrinho-item-valor{
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    line-height: 1.2;
+    align-items: center;
+}
+
+.carrinho-item-acoes{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: none;
+    height: fit-content;
+    align-items: center;
+}
+
+.carrinho-item-seletor{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: left;
+    gap: var(--space-xs)
+}
+
+.carrinho-item-lixeira{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs)
+}
+
+.carrinho-resumo {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+}
+
+
+
 
 /* ==========================================================
    MEDIA QUERIES min-width: 768px
@@ -932,6 +1080,16 @@
         flex-direction: column;
         gap: 0.75rem;
         overflow: visible;
+    }
+
+    .carrinho-layout {
+        display: grid;
+        grid-template-columns:
+            minmax(320px, 720px)
+            minmax(320px, 720px);
+        justify-content: center;
+        gap: var(--space-2xl);
+
     }
 
 }

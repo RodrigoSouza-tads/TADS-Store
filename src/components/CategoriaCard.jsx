@@ -1,13 +1,13 @@
 function CategoriaCard({
     nome,
     icone,
-    onClique
+    onClick
 }) {
     return (
         <button
             type="button"
             className="card-categoria"
-            onClick={onClique}
+            onClick={onClick}
         >
             <span className="card-categoria-icone">
                 {icone}

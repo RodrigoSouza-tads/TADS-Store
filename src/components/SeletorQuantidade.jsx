@@ -1,30 +1,28 @@
-function SeletorQuantidade({
-    quantidade,
-    onIncrementar,
-    onDecrementar
-}) {
-    return (
-        <div className="seletor-quantidade">
-            <button
-                type="button"
-                onClick={onDecrementar}
-                disabled={quantidade <= 1}
-            >
-                -
-            </button>
+import { useCarrinho } from "../contexts/CarrinhoContext";
 
-            <span>
-                {quantidade}
-            </span>
+function SeletorQuantidade({ quantidade, onIncrementar, onDecrementar }) {
+  return (
+    <div className="seletor-quantidade">
+      <button
+        type="button"
+        onClick={onDecrementar}
+        disabled={quantidade <= 1}
+        aria-label="Diminuir quantidade"
+      >
+        -
+      </button>
 
-            <button
-                type="button"
-                onClick={onIncrementar}
-            >
-                +
-            </button>
-        </div>
-    );
+      <span>{quantidade}</span>
+
+      <button
+        type="button"
+        onClick={onIncrementar}
+        aria-label="Aumentar quantidade"
+      >
+        +
+      </button>
+    </div>
+  );
 }
 
 export default SeletorQuantidade;

@@ -6,10 +6,11 @@ import GaleriaProduto from "./GaleriaProduto";
 import ProdutoCaracteristicas from "./ProdutoCaracteristicas";
 import ProdutoAvaliacao from "./ProdutoAvaliacao";
 
+
 import formatarPreco from "../utils/formatarPreco";
 import formatarDesconto from "../utils/formatarDesconto";
 
-
+import { useCarrinho } from "../contexts/CarrinhoContext";
 import { Link } from "react-router-dom";
 
 function ProdutoInfo({ produto }) {
@@ -27,7 +28,13 @@ function ProdutoInfo({ produto }) {
         desconto,
         freteGratis
     } = produto; 
+
+    const {
+        adicionarProduto
+    } = useCarrinho();
     
+    console.log(useCarrinho());
+
     return (
             <article className="produto-info">
 
@@ -70,8 +77,15 @@ function ProdutoInfo({ produto }) {
                        
 
                         <div className="produto-info-botao">
-                            <BotaoComprar texto="Comprar" aoClicar={() => {}}/>   
-
+                            <BotaoComprar 
+                                texto="Comprar" 
+                                onClick={() =>{
+                                    console.log("Clique ProdutoInfo");
+                                    adicionarProduto(produto);
+                                }}
+                                
+                            />   
+                            
                         </div>
 
                      </div>
