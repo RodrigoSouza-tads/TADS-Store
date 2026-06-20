@@ -6,7 +6,7 @@ function Breadcrumb({ itens }) {
             {itens.map((item, indice) => (
                 <span 
                     className="breadcrumb-item"
-                    key={item.texto}
+                    key={`${item.texto}-${indice}`}
                 >
                     {item.link ? (
                         <Link 

@@ -5,12 +5,18 @@ onClick
 }) {
 return (
 
-    <button>
-        <IconeLixeira className="botao-remover-carrinho-icone"/>
+    <button
+    
+        type="button"
+        className="botao-remover-carrinho"
+        onClick={onClick}
 
-        <span>
-            Remover
-        </span>
+        >
+            <IconeLixeira className="botao-remover-carrinho-icone"/>
+
+            <span>
+                Remover
+            </span>
 
     </button>
 );

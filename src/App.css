@@ -193,6 +193,34 @@
 }
 
 
+/* ==========================================================
+    TOAST
+==========================================================*/
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 9999;
+    padding: 1rem 1.5rem;
+    background: var(--color-success);
+    color: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    animation: toast-slide-up 0.25s ease;
+}
+
+@keyframes toast-slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 /* ==========================================================
    BOTOES, BADGES E ICONES E NOTAS

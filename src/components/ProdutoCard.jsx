@@ -5,6 +5,8 @@ import IconeFreteGratis from "./IconeFreteGratis";
 import formatarPreco from "../utils/formatarPreco";
 import formatarDesconto from "../utils/formatarDesconto";
 import { useCarrinho } from "../contexts/CarrinhoContext";
+import { useToast } from "../contexts/ToastContext";
+
 import { Link } from "react-router-dom";
 
 function ProdutoCard({ produto }) {
@@ -21,6 +23,8 @@ function ProdutoCard({ produto }) {
 
    const { adicionarProduto } = useCarrinho();
     console.log(useCarrinho());
+
+    const { mostrarToast } = useToast();
     
     return (
                
@@ -80,6 +84,7 @@ function ProdutoCard({ produto }) {
                     texto="Comprar"
                     onClick={() => {
                         adicionarProduto(produto);
+                        mostrarToast( `${produto.nome} adicionado ao carrinho`);
                         console.log("Clique ProdutoCard");
                     }}
                 />

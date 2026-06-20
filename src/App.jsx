@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { TemaProvider } from "./contexts/TemaContext";
 import { CarrinhoProvider } from "./contexts/CarrinhoContext";
+import { ToastProvider } from "./contexts/ToastContext";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import ResultadosBusca from "./pages/ResultadosBusca";
@@ -22,20 +23,23 @@ function App() {
 
       <CarrinhoProvider> {/* interação com carrinho em todas as telas */}
 
-        <Layout> {/* cabeçalho e rodapé em todas as telas */}
+        <ToastProvider>
 
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/produto/:id" element={<Detalhe />} />
-            <Route path="/resultadosbusca" element={<ResultadosBusca busca={busca}/>} />
-            <Route path="/carrinho" element={<Carrinho />}/>
-            <Route path="*" element={<NaoEncontrado />} />
-          </Routes>
+          <Layout> {/* cabeçalho e rodapé em todas as telas */}
 
-        </Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/produto/:id" element={<Detalhe />} />
+              <Route path="/resultadosbusca" element={<ResultadosBusca busca={busca}/>} />
+              <Route path="/carrinho" element={<Carrinho />}/>
+              <Route path="*" element={<NaoEncontrado />} />
+            </Routes>
+
+          </Layout>
+
+        </ToastProvider>
 
       </CarrinhoProvider>
-
 
     </TemaProvider>
   );

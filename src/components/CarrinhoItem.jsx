@@ -1,7 +1,5 @@
 import SeletorQuantidade from "./SeletorQuantidade";
-import IconeFreteGratis from "./IconeFreteGratis";
 import formatarPreco from "../utils/formatarPreco";
-import AvaliacaoEstrelas from "./AvaliacaoEstrelas";
 import BotaoRemoverCarrinho from "./BotaoRemoverCarrinho";
 import { useCarrinho } from "../contexts/CarrinhoContext";
 
@@ -50,7 +48,11 @@ function CarrinhoItem({produto}) {
                     <div className="carrinho-item-lixeira">
                         <BotaoRemoverCarrinho
                             onClick={() =>
-                                removerProduto(produto.id)
+                                {
+                                    removerProduto(produto.id);
+                                    console.log("Removendo", produto.id);
+                                }                               
+                                
                             }
                         />
                     </div>

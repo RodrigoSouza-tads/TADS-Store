@@ -4,7 +4,11 @@ import formatarPreco from "../utils/formatarPreco";
 function CarrinhoResumo({
     produtos = []
 }) {
-
+    const quantidadeItens = produtos.reduce(
+        (total, produto) =>
+        total + produto.quantidade,
+        0
+    );
     const subtotal = produtos.reduce(
         (total, produto) =>
             total + produto.preco * produto.quantidade,
@@ -22,6 +26,13 @@ function CarrinhoResumo({
                 <span>Subtotal: </span>
                 <span>
                     {formatarPreco(subtotal)}
+                </span>
+            </div>
+
+            <div className="carrinho-resumo-linha">
+                <span>Quantidade: </span>
+                <span>
+                    {quantidadeItens}
                 </span>
             </div>
 

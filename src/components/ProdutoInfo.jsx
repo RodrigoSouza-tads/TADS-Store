@@ -11,6 +11,7 @@ import formatarPreco from "../utils/formatarPreco";
 import formatarDesconto from "../utils/formatarDesconto";
 
 import { useCarrinho } from "../contexts/CarrinhoContext";
+import { useToast } from "../contexts/ToastContext";
 import { Link } from "react-router-dom";
 
 function ProdutoInfo({ produto }) {
@@ -29,11 +30,11 @@ function ProdutoInfo({ produto }) {
         freteGratis
     } = produto; 
 
-    const {
-        adicionarProduto
-    } = useCarrinho();
+    const { adicionarProduto} = useCarrinho();
     
     console.log(useCarrinho());
+
+    const { mostrarToast } = useToast();
 
     return (
             <article className="produto-info">

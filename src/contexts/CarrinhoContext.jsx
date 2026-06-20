@@ -1,7 +1,8 @@
 import {
     createContext,
     useContext,
-    useState
+    useState,
+    useEffect
 } from "react";
 
 const CarrinhoContext =
@@ -11,8 +12,28 @@ export function CarrinhoProvider({
     children
 }) {
 
-    const [itens,
-        setItens] = useState([]);
+    const [itens, setItens] = useState(() => {
+        const carrinhoSalvo =
+            localStorage.getItem(
+                "tads-store-carrinho"
+            );
+
+        return carrinhoSalvo
+            ? JSON.parse(carrinhoSalvo)
+            : [];
+        }
+    );
+
+    useEffect(() => {
+
+        localStorage.setItem(
+            "tads-store-carrinho",
+            JSON.stringify(itens)
+        );
+
+        }, 
+        [itens]
+    );
 
     function adicionarProduto(
         produto
