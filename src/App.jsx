@@ -25,7 +25,10 @@ function App() {
 
         <ToastProvider>
 
-          <Layout> {/* cabeçalho e rodapé em todas as telas */}
+          <Layout 
+            busca={busca}
+            onBuscar={setBusca}
+          >  {/* cabeçalho e rodapé em todas as telas */}
 
             <Routes>
               <Route path="/" element={<Home />} />

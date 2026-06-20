@@ -1,29 +1,33 @@
+import IconeBarraBusca from "./IconeBarraBusca";
+import { useNavigate } from "react-router-dom";
+
 function BarraBusca({
     valor,
     onChange,
     placeholder = "Buscar produtos..."
 }) {
+
+    const navigate = useNavigate();
+
+    function handleSubmit(evento) {
+        evento.preventDefault();
+
+        if (valor.trim() === "") {
+            return;
+        }
+
+        navigate("/resultadosbusca");
+    }
+
+
     return (
-        <div className="barra-busca">
-            <svg
-                className="icone-barra-busca"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-            >
-                <circle
-                    cx="11"
-                    cy="11"
-                    r="7"
-                />
+        <form 
+            onSubmit={handleSubmit}
+            className="barra-busca"
+        >
 
-                <line
-                    x1="16.65"
-                    y1="16.65"
-                    x2="21"
-                    y2="21"
-                />
-            </svg>
-
+            <IconeBarraBusca />
+            
             <input
                 type="search"
                 id="busca"
@@ -35,8 +39,10 @@ function BarraBusca({
                     onChange(evento.target.value)
                 }
                 autoComplete="off"
+                
             />
-        </div>
+
+        </form>
     );
 }
 

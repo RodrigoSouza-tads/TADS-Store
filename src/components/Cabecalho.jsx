@@ -36,13 +36,11 @@ function Cabecalho({
 
                     <div className="cabecalho-busca">
 
-                        <Link to="/resultadosbusca">
-                            <BarraBusca
-                                valor={busca}
-                                onChange={onBuscar}
-                             />
-                        </Link>
-
+                        <BarraBusca
+                            valor={busca}
+                            onChange={onBuscar}
+                            />
+                       
                     </div>
 
                     <div className="cabecalho-acoes">
