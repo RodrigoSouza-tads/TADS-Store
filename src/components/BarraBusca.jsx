@@ -27,7 +27,7 @@ function BarraBusca({
         >
 
             <IconeBarraBusca />
-            
+
             <input
                 type="search"
                 id="busca"

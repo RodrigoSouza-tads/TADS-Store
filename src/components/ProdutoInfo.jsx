@@ -21,6 +21,7 @@ function ProdutoInfo({ produto }) {
         descricao,
         categoria,
         preco,
+        precoInicial,
         peso,
         dimensao,
         imagens,
@@ -71,9 +72,16 @@ function ProdutoInfo({ produto }) {
                             <p className="produto-info-preco">
                                 {formatarPreco(preco) } 
                             </p>
-                            <span className="produto-info-desconto">
-                                {formatarDesconto(desconto)} de Desconto
-                            </span> 
+
+                            <div className="produto-info-preco-e-desconto">
+                                <span className="produto-info-preco-inicial">
+                                    ({formatarPreco(precoInicial)})
+                                </span>
+                                <span className="produto-info-desconto">
+                                    {formatarDesconto(desconto)} Off
+                                </span>
+                            </div>
+
                         </div>
                        
 

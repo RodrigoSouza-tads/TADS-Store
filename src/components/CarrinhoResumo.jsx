@@ -1,5 +1,6 @@
 import BotaoComprar from "./BotaoComprar";
 import formatarPreco from "../utils/formatarPreco";
+import { useNavigate } from "react-router-dom";
 
 function CarrinhoResumo({
     produtos = []
@@ -14,6 +15,8 @@ function CarrinhoResumo({
             total + produto.preco * produto.quantidade,
         0
     );
+
+    const navigate = useNavigate();
 
     return (
         <aside className="carrinho-resumo">
@@ -50,6 +53,9 @@ function CarrinhoResumo({
 
             <BotaoComprar
                 texto="Finalizar Compra"
+                onClick={() =>
+                    navigate("/checkout")
+                }
             />
 
         </aside>

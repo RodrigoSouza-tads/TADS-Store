@@ -1,4 +1,5 @@
 import { useTema } from "../contexts/TemaContext";
+import { useAuth} from "../contexts/AuthContext"
 import { useState } from "react";
 import Logo from "./Logo";
 import BarraBusca from "./BarraBusca";
@@ -22,8 +23,9 @@ function Cabecalho({
     quantidadeCarrinho = 0
 }) {
 
-    const {tema, alternarTema} = useTema();
-    const [menuAberto, setMenuAberto] = useState(false);
+    const { tema, alternarTema} = useTema();
+    const { usuario, autenticado, logout} = useAuth();
+    const [ menuAberto, setMenuAberto] = useState(false);
 
     return (
         <header className="cabecalho">
@@ -99,6 +101,14 @@ function Cabecalho({
                     </div>
 
                 </div>
+                
+                    {
+                        autenticado && (
+                            <span>
+                                Olá, {usuario.nome}
+                            </span>
+                        )
+                    }
 
                 <nav
                     className="cabecalho-navegacao"

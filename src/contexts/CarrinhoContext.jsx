@@ -106,13 +106,18 @@ export function CarrinhoProvider({
         );
     }
 
+    function limparCarrinho() {
+        setItens([]);
+    }
+
     return (
         <CarrinhoContext.Provider
             value={{
                 itens,
                 adicionarProduto,
                 removerProduto,
-                atualizarQuantidade
+                atualizarQuantidade,
+                limparCarrinho
             }}
         >
             {children}

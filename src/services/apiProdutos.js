@@ -11,7 +11,9 @@ function adaptarProduto(produto) {
     return {
         id: produto.id,
         nome: produto.title,
-        preco: produto.price,
+        precoInicial: produto.price,
+        desconto: produto.discountPercentage,
+        preco: (produto.price * (1 - (produto.discountPercentage/100 ) )),
         descricao: produto.description,
         categoria: produto.category,
         avaliacao: produto.rating,
@@ -20,10 +22,9 @@ function adaptarProduto(produto) {
         imagens: produto.images,
         estoque: produto.stock,
         marca: produto.brand,
-        desconto: produto.discountPercentage,
         peso: produto.weight,
         dimensao:produto.dimensions,
-        freteGratis: produto.price >= 500
+        freteGratis: produto.price >= 1000
     };
 }
 
