@@ -2,7 +2,7 @@ function BannerPromocional({
     titulo = "Tecnologia para seu dia a dia",
     descricao ="Encontre notebooks, smartphones, tablets e acessórios com preços especiais.",
     textoBotao ="Ver ofertas",
-    src = "/src/assets/banner-promocional.png",
+    src = "src/assets/banner-promocional.png" ,
     alt = "Banner Promocional TADS Store"
 }) {
     return (
