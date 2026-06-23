@@ -14,6 +14,9 @@ O projeto simula uma loja virtual de produtos de tecnologia, permitindo:
 - Notificações Toast 
 - Persistência local de dados
 
+## Link de acesso
+https://tads-store-rodrigosouza.netlify.app/
+
 
 # Tecnologias Utilizadas 
 - React 
@@ -23,34 +26,152 @@ O projeto simula uma loja virtual de produtos de tecnologia, permitindo:
 - LocalStorage 
 - DummyJSON API
 
-# Como Executar o Projeto 
-Instalar as dependências:
- ```bash npm install ``` 
- Executar o projeto: ```bash npm run dev ``` 
+# Como Executar o Projeto
+1. Clonar o repositório
+
+Abra o terminal e execute:
+
+git clone https://github.com/RodrigoSouza-tads/TADS-Store.git
+2. Acessar a pasta do projeto
+cd TADS-Store
+3. Instalar as dependências
+
+O projeto utiliza Node.js, NPM, React e Vite.
+
+Execute:
+
+npm install
+
+4. Iniciar o ambiente de desenvolvimento
+npm run dev
+
+Após a inicialização, o Vite exibirá um endereço semelhante a:
+
+Local: http://localhost:5173/
+
+Abra o endereço informado pelo terminal em seu navegador.
+
+5. Build de produção (Opcional)
+
+Para gerar a versão de produção:
+
+npm run build
+
+Para visualizar a build localmente:
+
+npm run preview
+
+## Pré-requisitos
+
+Antes de executar o projeto, certifique-se de possuir instalado:
+
+Node.js 18 ou superior
+NPM 9 ou superior
+Git
+
+Verificação rápida:
+
+node -v
+npm -v
+git --version
  
  # Usuário de Teste 
- Utilize as credenciais abaixo para acessar o sistema: 
+ Utilize as credenciais abaixo para acessar o sistema na página **Login**: 
  **E-mail** ```text demo@tadsstore.com ``` 
  **Senha** ```text 123456 ``` 
  Arquivo responsável: ```text src/data/usuarioDemo.js ```
+
+ O projeto também permite a criação de uma conta própria na página **Cadastro**, os dados serão registrados no LocalStorage. 
  
  # Estrutura do Projeto 
- ```text src │ ├── components ├── contexts ├── data ├── pages ├── services ├── utils │ ├── App.jsx ├── App.css ├── index.css └── main.jsx ``` 
+
+    src │ 
+        ├── components 
+        ├── contexts 
+        ├── data 
+        ├── pages 
+        ├── services 
+        ├── utils │ 
+        ├── App.jsx 
+        ├── App.css 
+        ├── index.css 
+        └── main.jsx
  
  # Contextos (Contexts) 
- 
  Os Contexts são responsáveis pelo gerenciamento global de estados da aplicação. 
- ## AuthContext Responsável pela autenticação do usuário.
-  ### Funções - login() - logout() ### Estados - usuario - autenticado ### Finalidade Controlar acesso às rotas privadas e armazenar sessão do usuário. --- 
-  ## CarrinhoContext Responsável pelo gerenciamento completo do carrinho. ### Funções - adicionarProduto() - removerProduto() - atualizarQuantidade() - limparCarrinho() 
-  ### Estados - itens ### Finalidade Centralizar todas as operações relacionadas ao carrinho de compras. --- 
-  ## FavoritosContext Responsável pelo gerenciamento da lista de favoritos. ### Funções - adicionarFavorito() - removerFavorito() - alternarFavorito() 
-  ### Estados - favoritos ### Finalidade Permitir que produtos sejam salvos para consulta posterior. --- ## TemaContext Responsável pelo tema da aplicação. 
-  ### Funções - alternarTema() 
-  ### Estados - tema 
-  ### Finalidade Controlar modo claro e escuro em toda a aplicação. --- 
+
+ ## AuthContext 
+ Responsável pela autenticação do usuário.
+
+  ### Funções 
+  - login() 
+  - logout() 
   
-  ## ToastContext Responsável pelas notificações da aplicação. ### Funções - mostrarToast() ### Estados - mensagem - visivel ### Finalidade Exibir mensagens temporárias ao usuário. Exemplos: - Produto adicionado ao carrinho - Produto adicionado aos favoritos - Pedido realizado --- 
+  ### Estados 
+  - usuario 
+  - autenticado 
+
+  ### Finalidade 
+  Controlar acesso às rotas privadas e armazenar sessão do usuário.
+
+  
+  ## CarrinhoContext 
+  Responsável pelo gerenciamento completo do carrinho. 
+
+  ### Funções 
+  - adicionarProduto() 
+  - removerProduto() 
+  - atualizarQuantidade() 
+  - limparCarrinho() 
+
+  ### Estados 
+  - itens 
+
+  ### Finalidade 
+  Centralizar todas as operações relacionadas ao carrinho de compras.
+
+
+  ## FavoritosContext 
+  Responsável pelo gerenciamento da lista de favoritos. 
+
+  ### Funções 
+  - adicionarFavorito() 
+  - removerFavorito() 
+  - alternarFavorito() 
+
+  ### Estados 
+  - favoritos 
+
+  ### Finalidade 
+  Permitir que produtos sejam salvos para consulta posterior.
+  
+  ## TemaContext 
+  Responsável pelo tema da aplicação. 
+
+  ### Funções 
+  - alternarTema() 
+
+  ### Estados 
+  - tema 
+
+  ### Finalidade 
+  Controlar modo claro e escuro em toda a aplicação.
+  
+
+  ## ToastContext 
+  Responsável pelas notificações da aplicação.
+
+  ### Funções 
+  - mostrarToast() 
+
+  ### Estados 
+  - mensagem 
+  - visivel 
+
+  ### Finalidade 
+  Exibir mensagens temporárias ao usuário. 
+  Exemplos: 
+  - Produto adicionado ao carrinho 
   
   # Serviços 
   ## apiProdutos.js 
@@ -68,136 +189,161 @@ Instalar as dependências:
   - tablets 
   - mobile-accessories 
   
-  ### Estrutura ```javascript { laptops: [], smartphones: [], tablets: [], "mobile-accessories": [] } ``` --- 
   
   # Utilitários 
   ## formatarPreco.js 
-  Formata valores monetários para Real Brasileiro. Exemplo: ```text R$ 1.299,90 ``` --- 
+  Formata valores monetários para Real Brasileiro. Exemplo: ```text R$ 1.299,90 ``` 
   ## formatarDesconto.js 
-  Formata percentuais de desconto. Exemplo: ```text 15% OFF ``` --- 
+  Formata percentuais de desconto. Exemplo: ```text 15% OFF ``` 
   ## formatarPeso.js 
-  Converte e ajusta pesos para apresentação conforme categoria. --- 
+  Converte e ajusta pesos para apresentação conforme categoria.
   ## formatarDimensao.js 
-  Converte e ajusta dimensões conforme categoria do produto. Exemplo: ```text Largura Altura Profundidade ``` --- 
+  Converte e ajusta dimensões conforme categoria do produto. Exemplo: ```text Largura Altura Profundidade ``` 
   
   # Páginas 
   ## Home 
   Página inicial da aplicação. 
+
   ### Funcionalidades 
   - Banner promocional 
   - Categorias 
-  - Carrosséis de produtos por categoria --- 
+  - Carrosséis de produtos por categoria
+
 
   ## Detalhe 
   Página de visualização individual do produto. 
+
   ### Funcionalidades 
   - Galeria de imagens 
   - Informações detalhadas 
   - Avaliações 
   - Especificações técnicas 
   - Adicionar ao carrinho 
-  - Adicionar aos favoritos --- 
+  - Adicionar aos favoritos
   
+
   ## Carrinho 
   Página responsável pelo carrinho de compras. 
+
   ### Funcionalidades 
   - Alterar quantidade 
   - Remover produtos 
   - Resumo do pedido 
-  - Navegação para checkout --- 
+  - Navegação para checkout
   
+
   ## Checkout 
   Página de finalização da compra. 
+
   ### Funcionalidades 
   - Dados do comprador 
   - Endereço de entrega 
   - Resumo dos produtos 
-  - Confirmação do pedido --- 
+  - Confirmação do pedido
   
+
   ## ConfirmacaoPedido 
   Exibida após a conclusão do checkout. 
+
   ### Funcionalidades 
-  - Mensagem de sucesso - Resumo do pedido --- 
+  - Mensagem de sucesso 
+
 
   ## Login 
   Página de autenticação.
+
    ### Funcionalidades 
    - Validação de usuário 
-   - Integração com AuthContext --- 
+   - Integração com AuthContext
+
+
    ## Cadastro 
    Página de cadastro de novos usuários. 
+
    ### Funcionalidades 
    - Coleta de dados 
-   - Validação de formulário --- 
+   - Validação de formulário
+
    
    ## Favoritos 
    Página responsável por listar os produtos favoritados. 
+
    ### Funcionalidades 
    - Exibição dos produtos salvos 
-   - Remoção de favoritos --- 
+   - Remoção de favoritos
+
    
    ## MinhaConta 
-   Área destinada às informações do usuário autenticado. --- 
+   Área destinada às informações do usuário autenticado.
+
    ## ResultadosBusca 
    Página de exibição dos resultados da pesquisa. 
+
    ### Funcionalidades 
-   - Filtragem por termo digitado --- 
+   - Filtragem por termo digitado 
    
    ## NaoEncontrado 
-   Página de erro 404. --- 
+   Página de erro 404. 
    
    # Componentes Principais 
    ## Layout 
    Estrutura base utilizada em todas as páginas. 
    Contém: 
    - Cabecalho 
-   - Conteúdo principal 
-   - Rodape --- 
+   - Conteúdo principal renderizado dentro da prop {children}
+   - Rodape
    
    ## Cabecalho 
    Responsável pela navegação principal. 
+
    ### Componentes Utilizados 
    - Logo 
    - BarraBusca 
    - BotaoCarrinho 
    - BotaoUsuario 
-   - BotaoTema --- 
+   - BotaoTema
    
    ## ProdutoCard 
    Card de produto utilizado na Home e Favoritos. 
+
    ### Funcionalidades 
    - Exibir produto 
    - Favoritar 
    - Adicionar ao carrinho 
-   - Navegação para detalhe --- 
+   - Navegação para detalhe
    
    ## ProdutoInfo 
    Exibe informações completas do produto. 
-   ### Utiliza 
+
+   ### Componentes Utilizados
    - GaleriaProduto 
    - ProdutoCaracteristicas 
-   - ProdutoAvaliacao --- 
+   - ProdutoAvaliacao 
    
    ## GaleriaProduto 
    Galeria de imagens do produto. 
+
    ### Funcionalidades 
    - Imagem principal 
-   - Miniaturas selecionáveis --- 
+   - Miniaturas selecionáveis 
    
    ## CarrinhoItem 
    Item individual do carrinho. 
+
    ### Funcionalidades 
    - Alterar quantidade 
-   - Remover produto --- 
+   - Remover produto
 
    ## CarrinhoResumo 
    Resumo financeiro do pedido.
+
     ### Informações 
     - Subtotal 
-    - Total --- 
+    - Total
 
     ## CheckoutFormulario 
     Formulário principal do checkout. 
+
     ### Campos 
     - Nome 
     - E-mail 
@@ -205,23 +351,26 @@ Instalar as dependências:
     - CPF 
     - Endereço
      - Número 
-     - CEP --- 
+     - CEP
 
      ## FormularioCampo 
      Componente reutilizável para formulários. 
+
      ### Recursos 
      - Label automática 
      - Mensagem de erro 
      - Acessibilidade 
      - Validação 
-     - AutoComplete --- 
+     - AutoComplete 
      
      ## Breadcrumb 
      Componente de navegação hierárquica. 
-     Exemplo: ```text Home > Carrinho > Checkout ``` --- 
+     Exemplo: ```text Home > Carrinho > Checkout ``` 
 
      ## Toast 
-     Componente de notificação temporária. --- 
+     Componente de notificação temporária.
+
+
      # Funcionalidades Implementadas 
      
      ## Catálogo
@@ -252,10 +401,9 @@ Instalar as dependências:
       
        ## Interface
         - Tema claro/escuro 
-        
         - Responsividade 
         - Toasts 
-        - Breadcrumbs --- 
+        - Breadcrumbs 
         
 
 
