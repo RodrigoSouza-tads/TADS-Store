@@ -1,12 +1,12 @@
-function BotaoComprar({
-    texto = "Comprar",
+function Botao({
+    texto = "",
     onClick,
    
 }) {
     return (
         <button
             type="button"
-            className="botao-comprar"
+            className="botao"
             onClick={onClick}
            
         >
@@ -15,4 +15,4 @@ function BotaoComprar({
     );
 }
 
-export default BotaoComprar;
+export default Botao;

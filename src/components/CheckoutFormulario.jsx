@@ -3,7 +3,8 @@ import FormularioCampo from "./FormularioCampo";
 function CheckoutFormulario({
     dadosCliente = {},
     erros = {},
-    onAlterar
+    onAlterar,
+    onSubmit
 
 }) {
 
@@ -22,8 +23,9 @@ function CheckoutFormulario({
     return (
 
         <form
-
+            id="checkout-form"
             className="checkout-formulario"
+            onSubmit={onSubmit}
             noValidate
 
         >
@@ -90,7 +92,7 @@ function CheckoutFormulario({
                 required
                 minLength={10}
                 maxLength={15}
-                pattern="[0-9()\-\s]+"
+                pattern="\(?[0-9]{2}\)?\s?[0-9]{5}-?[0-9]{4}"
                 inputMode="tel"
                 autoComplete="tel"
                 erro={erros.telefone}
@@ -166,7 +168,7 @@ function CheckoutFormulario({
 
 
             <FormularioCampo
-                className="checkout-formulario-secao campo-obrigatorio"
+                className="checkout-formulario-secao"
                 id="cep"
                 rotulo="CEP"
                 placeholder="00000-000"

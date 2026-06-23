@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import BotaoVoltar from "../components/BotaoVoltar";
 function ConfirmacaoPedido() {
 
 return (
@@ -14,12 +14,7 @@ return (
             TADS Store.
         </p>
 
-        <Link
-            to="/"
-            className="botao-comprar"
-        >
-            Voltar para a Home
-        </Link>
+        <BotaoVoltar />  
 
     </section>
 );

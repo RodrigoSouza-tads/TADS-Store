@@ -14,14 +14,10 @@ function BotaoCarrinho({ onClick}) {
         0
     );
 
-    console.log(
-        "Itens Carrinho:",
-        itens
-    );
     return (
 
         <Link
-            to={`/carrinho`}
+            to="/carrinho"
             className="link-sem-estilo"
         >
             <button

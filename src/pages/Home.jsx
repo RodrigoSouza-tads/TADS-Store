@@ -25,7 +25,6 @@ function Home({
             const produtosApi = await buscarProdutosPorCategoria();
 
             setProdutosPorCategoria(produtosApi);
-            console.log("Produtos por categoria:", produtosApi);
 
         } catch (error) {
             console.error(

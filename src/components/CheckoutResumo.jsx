@@ -1,4 +1,5 @@
-import BotaoComprar from "./BotaoComprar";
+import Botao from "./Botao";
+import BotaoVoltar from "./BotaoVoltar";
 import formatarPreco from "../utils/formatarPreco";
 import { useNavigate } from "react-router-dom";
 import { useCarrinho } from "../contexts/CarrinhoContext";
@@ -31,17 +32,46 @@ const subtotal = produtos.reduce(
 
 function confirmarPedido() {
 
-    if (produtos.length === 0) {
+    if(produtos.length === 0){
+
+        alert("Seu carrinho está vazio.");
+
         return;
     }
 
-    if(!cliente.nome || !cliente.email){
+    const camposObrigatorios = [
+        cliente.nome,
+        cliente.email,
+        cliente.telefone,
+        cliente.cpf,
+        cliente.endereco,
+        cliente.numero,
+        cliente.cep
+    ];
 
-        alert( "Preencha seus dados." );
+    if(camposObrigatorios.some(campo => !String(campo|| "").trim())){
+        alert("Preencha todos os dados.");
         return;
     }
+
+
+    const pedido = {
+
+        cliente,
+
+        itens: produtos,
+
+        total: subtotal,
+
+        data: new Date().toISOString()
+
+    };
+
 
     limparCarrinho();
+
+    navigate("/pedido-confirmado");
+
 }
 
 return (
@@ -107,10 +137,12 @@ return (
 
         </div>
 
-        <BotaoComprar
-            texto="Confirmar Pedido"
-            onClick={confirmarPedido}
-        />
+            <Botao
+                texto="Confirmar pedido"
+                onClick={confirmarPedido}
+                type="submit"
+                form="checkout-form"
+            />
 
     </aside>
 );

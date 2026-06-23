@@ -1,17 +1,26 @@
 import IconeFavorito from "./IconeFavorito";
+import { Link } from "react-router-dom";
 
 function BotaoFavoritoMenu({
     onClick
 }) {
     return (
-        <button
-            type="button"
-            className="botao-menu botao-favorito-menu"
-            aria-label="Favoritos"
-            onClick={onClick}
+        <Link
+            to="/favoritos"
+            className="link-sem-estilo"
         >
-            <IconeFavorito />
-        </button>
+            
+            <button
+                type="button"
+                className="botao-menu botao-favorito-menu"
+                aria-label="Favoritos"
+                onClick={onClick}
+            >
+                <IconeFavorito />
+            </button>
+        
+        </Link>
+
     );
 }
 

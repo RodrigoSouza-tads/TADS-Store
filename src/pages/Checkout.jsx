@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Breadcrumb from "../components/Breadcrumb";
+import BotaoVoltar from "../components/BotaoVoltar";
 import CheckoutFormulario from "../components/CheckoutFormulario";
 import CheckoutResumo from "../components/CheckoutResumo";
 import { useCarrinho } from "../contexts/CarrinhoContext";
@@ -50,6 +51,18 @@ useEffect(() => {
 
         });
 
+    } else {
+
+        setDadosCliente({
+            nome:"",
+            email:"",
+            telefone:"",
+            cpf:"",
+            endereco:"",
+            numero:"",
+            cep:""
+        });
+
     }
 
 },[usuario]);
@@ -73,7 +86,12 @@ return (
             ]}
         />
 
-        <h1 className="checkout-titulo">
+        <BotaoVoltar
+            to="/carrinho"
+            texto = "Carrinho"
+        />
+
+        <h1 className="pagina-titulo">
             Finalizar Compra
         </h1>
 
@@ -82,6 +100,7 @@ return (
             <CheckoutFormulario
                 dadosCliente={dadosCliente}
                 onAlterar={ alterarCliente}
+                
             />
 
             <CheckoutResumo

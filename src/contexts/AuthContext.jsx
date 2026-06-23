@@ -5,8 +5,9 @@ useEffect,
 useState
 } from "react";
 
-const AuthContext =
-createContext();
+import usuarioDemo from "../data/usuarioDemo";
+
+const AuthContext = createContext();
 
 export function AuthProvider({
     children

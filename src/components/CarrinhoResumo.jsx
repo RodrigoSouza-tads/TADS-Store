@@ -1,4 +1,4 @@
-import BotaoComprar from "./BotaoComprar";
+import Botao from "./Botao";
 import formatarPreco from "../utils/formatarPreco";
 import { useNavigate } from "react-router-dom";
 
@@ -51,8 +51,8 @@ function CarrinhoResumo({
                 </strong>
             </div>
 
-            <BotaoComprar
-                texto="Finalizar Compra"
+            <Botao
+                texto="Confirmar pedido"
                 onClick={() =>
                     navigate("/checkout")
                 }

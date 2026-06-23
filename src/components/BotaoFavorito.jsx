@@ -1,33 +1,49 @@
-import { useState } from "react";
 import IconeFavorito from "./IconeFavorito";
+import {
+useFavoritos
+} from "../contexts/FavoritosContext";
 
-function BotaoFavorito() {
-    const [favorito, setFavorito] =
-        useState(false);
+function BotaoFavorito({
+produto
+}) {
 
-    function alternarFavorito() {
-        setFavorito(
-            (valorAtual) => !valorAtual
-        );
-    }
+const {
+    alternarFavorito,
+    ehFavorito
+} = useFavoritos();
 
-    return (
-        <button
-            type="button"
-            className="botao-favorito"
-            onClick={alternarFavorito}
-            aria-label={
-                favorito
-                    ? "Remover dos favoritos"
-                    : "Adicionar aos favoritos"
-            }
-        >
-            <IconeFavorito 
-                preenchido={favorito}
-            />
-
-        </button>
+const favorito =
+    ehFavorito(
+        produto.id
     );
+
+return (
+
+    <button
+        type="button"
+        className="botao-favorito"
+        onClick={() =>
+            alternarFavorito(
+                produto
+            )
+        }
+        aria-label={
+            favorito
+                ? "Remover dos favoritos"
+                : "Adicionar aos favoritos"
+        }
+    >
+
+        <IconeFavorito
+            preenchido={
+                favorito
+            }
+        />
+
+    </button>
+
+);
+
 }
 
 export default BotaoFavorito;

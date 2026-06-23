@@ -1,10 +1,7 @@
-import Botao from "./BotaoComprar";
-
 function BannerPromocional({
     titulo = "Tecnologia para seu dia a dia",
     descricao ="Encontre notebooks, smartphones, tablets e acessórios com preços especiais.",
     textoBotao ="Ver ofertas",
-    onCliqueBotao,
     src = "/src/assets/banner-promocional.png",
     alt = "Banner Promocional TADS Store"
 }) {
@@ -13,26 +10,26 @@ function BannerPromocional({
 
             <div className="banner-conteudo">
 
-                <h2>{titulo}</h2>
+                <h2 className="banner-titulo">
+                    {titulo}
+                </h2>
+
+                <p className="banner-descricao">
+                    {descricao}
+                </p>
+
+            </div>
+
+            <div className="banner-imagem-container">
 
                 <img
                     src={src}
                     alt={alt}
                     className="banner-imagem"
+
                 />
 
-                <p>{descricao}</p>
-
-                {textoBotao && (
-                    <Botao
-                        texto={textoBotao}
-                        onClick={onCliqueBotao}
-                    />
-                )}
-
             </div>
-
-
 
         </section>
     );

@@ -40,14 +40,8 @@ export function CarrinhoProvider({
     ) 
     
     {
-        console.log(  "Adicionando:", produto);
 
         setItens((estadoAtual) => {
-
-                console.log(
-                    "Estado atual:",
-                    estadoAtual
-                );
 
             const produtoExistente =
                 estadoAtual.find(
@@ -76,6 +70,7 @@ export function CarrinhoProvider({
                     quantidade: 1
                 }
             ];
+
         });
     }
 

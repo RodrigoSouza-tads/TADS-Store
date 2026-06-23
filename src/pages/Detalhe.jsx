@@ -4,6 +4,7 @@ import Carregando from "../components/Carregando";
 import EstadoVazio from "../components/EstadoVazio";
 import ProdutoInfo from "../components/ProdutoInfo";
 import Breadcrumb from "../components/Breadcrumb"
+import BotaoVoltar from "../components/BotaoVoltar";
 import { 
     buscarProdutoPorId 
 } from "../services/apiProdutos";
@@ -20,7 +21,7 @@ function Detalhe() {
             const produtoIdApi = await buscarProdutoPorId (id);
 
             setProduto(produtoIdApi);
-            console.log("Produto:", produtoIdApi);
+            
 
         } catch (error) {
             console.error(
@@ -71,25 +72,23 @@ function Detalhe() {
 
             <div className="detalhe-container">
 
-            <Breadcrumb
-                itens={[
-                    {
-                        texto: "Home",
-                        link: "/"
-                    },
-                    {
-                        texto: "Produto"
-                    }
-                ]}
-            />
+                <Breadcrumb
+                    itens={[
+                        {
+                            texto: "Home",
+                            link: "/"
+                        },
+                        {
+                            texto: "Produto"
+                        }
+                    ]}
+                />
 
 
-                <Link 
+               <BotaoVoltar
                     to="/"
-                    className="botao-detalhe-voltar"
-                >
-                    ← Voltar para a loja
-                </Link>
+                    texto="Home"
+               />
 
                 <ProdutoInfo produto={produto}/>
 

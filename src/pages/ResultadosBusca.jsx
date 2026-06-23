@@ -107,7 +107,9 @@ function ResultadosBusca({
                 ]}
             />
 
-            <h2>Resultados da Busca</h2>
+            <h1 className="pagina-titulo">
+                Resultados da Busca
+            </h1>
 
             {produtosFiltrados.length === 0 ? (
                 <EstadoVazio

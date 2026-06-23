@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { TemaProvider } from "./contexts/TemaContext";
 import { CarrinhoProvider } from "./contexts/CarrinhoContext";
 import { ToastProvider } from "./contexts/ToastContext";
-import { AuthProvider } from "./contexts/AuthContext";
+import { FavoritosProvider } from "./contexts/FavoritosContext";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import ResultadosBusca from "./pages/ResultadosBusca";
@@ -11,10 +11,12 @@ import Detalhe from "./pages/Detalhe"
 import Carrinho from "./pages/Carrinho"
 import Checkout from "./pages/Checkout";
 import ConfirmacaoPedido from "./pages/ConfirmacaoPedido";
-import Usuario from "./pages/Usuario";
+import MinhaConta from "./pages/MinhaConta";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
+import Favoritos from "./pages/Favoritos";
 import NaoEncontrado from "./pages/NaoEncontrado"
+import RotaPrivada from "./components/RotaPrivada";
 import "./App.css";
 
 
@@ -27,7 +29,7 @@ function App() {
 
     <TemaProvider> {/* mudança de tema em todas as telas */}
 
-      <AuthProvider>
+      <FavoritosProvider>
 
         <CarrinhoProvider> {/* interação com carrinho em todas as telas */}
 
@@ -42,12 +44,13 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/produto/:id" element={<Detalhe />} />
                 <Route path="/resultadosbusca" element={<ResultadosBusca busca={busca}/>} />
+                <Route path="/favoritos" element={<Favoritos />}/>
                 <Route path="/carrinho" element={<Carrinho />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/pedido-confirmado" element={<ConfirmacaoPedido />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/cadastro" element={<Cadastro />} />
-                <Route path="/usuario" element={<Usuario />} />
+                <Route path="/minha-conta" element={<RotaPrivada><MinhaConta /></RotaPrivada> } />
                 <Route path="*" element={<NaoEncontrado />} />
               </Routes>
 
@@ -57,7 +60,8 @@ function App() {
 
         </CarrinhoProvider>
 
-      </AuthProvider>
+      </FavoritosProvider>
+
 
     </TemaProvider>
   );

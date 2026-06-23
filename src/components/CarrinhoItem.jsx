@@ -50,7 +50,6 @@ function CarrinhoItem({produto}) {
                             onClick={() =>
                                 {
                                     removerProduto(produto.id);
-                                    console.log("Removendo", produto.id);
                                 }                               
                                 
                             }

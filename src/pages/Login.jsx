@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import usuarioDemo from "../data/usuarioDemo";
 
 import Breadcrumb from "../components/Breadcrumb";
 import FormularioCampo from "../components/FormularioCampo";
-import BotaoComprar from "../components/BotaoComprar";
+import Botao from "../components/Botao";
 
 function Login() {
 
@@ -64,17 +65,29 @@ function Login() {
             return;
         }
 
-        console.log(
-            "Login:",
-            dadosLogin
-        );
-        
-        login({
-            email: dadosLogin.email
+        if (
+            dadosLogin.email === usuarioDemo.email &&
+            dadosLogin.senha === usuarioDemo.senha
+        ) {
+
+            login(
+                usuarioDemo
+            );
+
+            navigate(
+                "/minha-conta"
+            );
+
+            return;
+        }
+
+        setErros({
+
+            email: "",
+            senha: "E-mail ou senha inválidos"
+
         });
 
-        navigate("/");
-        
     }
 
     return (
@@ -99,11 +112,17 @@ function Login() {
                     Entrar
                 </h1>
 
+                <p className="login-demo">
+                    Usuário Demo: demo@tadsstore.com
+                </p>
+
+                <p className="login-demo">
+                    Senha: 123456
+                </p>
+
                 <form
                     className="login-formulario"
-                    onSubmit={
-                        realizarLogin
-                    }
+                    onSubmit={realizarLogin}
                     noValidate
                 >
 
@@ -149,8 +168,9 @@ function Login() {
                         }
                     />
 
-                    <BotaoComprar
+                    <Botao
                         texto="Entrar"
+                        onClick={realizarLogin}
                     />
 
                 </form>

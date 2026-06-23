@@ -9,14 +9,12 @@ import BotaoUsuario from "./BotaoUsuario";
 import BotaoCarrinho from "./BotaoCarrinho";
 import BotaoToggle from "./BotaoToggle";
 import MenuToggle from "./MenuToggle";
-import MenuNavegacao from "./MenuNavegacao";
 import { Link } from "react-router-dom";
 
 
 
 
 function Cabecalho({
-    titulo,
     busca,
     onBuscar,
     itensMenu = [],
@@ -26,6 +24,7 @@ function Cabecalho({
     const { tema, alternarTema} = useTema();
     const { usuario, autenticado, logout} = useAuth();
     const [ menuAberto, setMenuAberto] = useState(false);
+    
 
     return (
         <header className="cabecalho">
@@ -45,18 +44,88 @@ function Cabecalho({
                        
                     </div>
 
+                    {/* auth */}
                     <div className="cabecalho-acoes">
 
+                        
+
+
+                        {/* DESKTOP */}
+                        <div className="cabecalho-menu-desktop">
+
+                                {
+                                    autenticado && (
+                                        <span className="cabecalho-mensagem">
+                                            {usuario.nome}
+                                        </span>
+                                    )
+                                }
+
+  
+
+
+                            <BotaoFavoritoMenu />
+
+                            <BotaoCarrinho
+                                quantidadeItens={quantidadeCarrinho}
+                            />
+
+                            <BotaoUsuario/>
+
+                            <BotaoTema
+                                tema={tema}
+                                alternarTema={alternarTema}
+                            />
+
+                            {autenticado ? (
+
+                                <button
+                                    className="botao-login-cabecalho"
+                                    onClick={logout}
+                                >
+                                    Sair
+                                </button>
+
+                            ) : (
+
+                                <Link
+                                    to="/login"
+                                    className="botao-login-cabecalho"
+                                >
+                                    Entrar
+                                </Link>
+
+                            )}
+
+
+                        </div>
+
+
+                        {/* MOBILE */}
                         <div className="cabecalho-menu-mobile">
+
+
                             <BotaoToggle
                                 aberto={menuAberto}
                                 onToggle={() =>
-                                    setMenuAberto(!menuAberto)
+                                    setMenuAberto(
+                                        !menuAberto
+                                    )
                                 }
                             />
+
+
                             <MenuToggle
                                 aberto={menuAberto}
                             >
+
+                                {
+                                    autenticado && (
+                                        <span className="cabecalho-mensagem">
+                                            {usuario.nome}
+                                        </span>
+                                    )
+                                }
 
                                 <BotaoFavoritoMenu />
 
@@ -66,58 +135,44 @@ function Cabecalho({
                                     }
                                 />
 
-                                <BotaoUsuario />
+                                <BotaoUsuario/>
 
                                 <BotaoTema
                                     tema={tema}
-                                    alternarTema={
-                                        alternarTema
-                                    }
+                                    alternarTema={alternarTema}
                                 />
 
+                                {
+                                    autenticado ? (
+
+                                        <button
+                                            className="botao-login-cabecalho"
+                                            onClick={logout}
+                                        >
+                                            Sair
+                                        </button>
+
+                                    ) : (
+
+                                        <Link
+                                            to="/login"
+                                            className="botao-login-cabecalho"
+                                        >
+                                            Entrar
+                                        </Link>
+
+                                    )
+                                }
+
+
                             </MenuToggle>
+
                         </div>
-                        <div className="cabecalho-menu-desktop">
-                            
-                             <BotaoFavoritoMenu />
-
-                            <BotaoCarrinho
-                                quantidadeItens={
-                                    quantidadeCarrinho
-                                }
-                            />
-
-                            <BotaoUsuario />
-
-                            <BotaoTema
-                                tema={tema}
-                                alternarTema={
-                                    alternarTema
-                                }
-                            />
-                        </div>            
 
 
                     </div>
 
                 </div>
-                
-                    {
-                        autenticado && (
-                            <span>
-                                Olá, {usuario.nome}
-                            </span>
-                        )
-                    }
-
-                <nav
-                    className="cabecalho-navegacao"
-                    aria-label="Categorias"
-                >
-                    <MenuNavegacao
-                        itens={itensMenu}
-                    />
-                </nav>
 
             </div>
 

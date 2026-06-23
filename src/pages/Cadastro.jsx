@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 
 import Breadcrumb from "../components/Breadcrumb";
 import FormularioCampo from "../components/FormularioCampo";
-import BotaoComprar from "../components/BotaoComprar";
+import Botao from "../components/Botao";
 
 function Cadastro() {
 
@@ -135,7 +135,7 @@ function Cadastro() {
 
 
         navigate(
-            "/usuario"
+            "/minha-conta"
         );
 
     }
@@ -311,7 +311,7 @@ function Cadastro() {
                         }
                     />
 
-                    <BotaoComprar
+                    <Botao
                         texto="Criar Conta"
                         onClick={realizarCadastro}
                     />

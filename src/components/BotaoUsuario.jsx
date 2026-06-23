@@ -12,7 +12,7 @@ function BotaoUsuario({
 
     function acessarUsuario(){
         if(autenticado){
-            navigate( "/usuario" );
+            navigate( "/minha-conta" );
         }else{
             navigate("/login" );
         }

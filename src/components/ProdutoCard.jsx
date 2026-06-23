@@ -1,4 +1,4 @@
-import BotaoComprar from "./BotaoComprar";
+import Botao from "./Botao";
 import Avaliacao from "./AvaliacaoEstrelas";
 import BotaoFavorito from "./BotaoFavorito";
 import IconeFreteGratis from "./IconeFreteGratis";
@@ -23,7 +23,7 @@ function ProdutoCard({ produto }) {
     } = produto;
 
    const { adicionarProduto } = useCarrinho();
-    console.log(useCarrinho());
+    
 
     const { mostrarToast } = useToast();
     
@@ -37,7 +37,9 @@ function ProdutoCard({ produto }) {
                     <IconeFreteGratis />
                 )}
 
-                <BotaoFavorito />
+                <BotaoFavorito
+                    produto={produto}
+                />
 
             </div>
 
@@ -64,6 +66,7 @@ function ProdutoCard({ produto }) {
                     </h3>
 
                     <Avaliacao
+                        className="produto-avaliacao"
                         nota={avaliacao}
                     />
 
@@ -87,12 +90,12 @@ function ProdutoCard({ produto }) {
 
             <div className="produto-card-botao">
 
-                <BotaoComprar
+                <Botao
                     texto="Comprar"
                     onClick={() => {
                         adicionarProduto(produto);
                         mostrarToast( `${produto.nome} adicionado ao carrinho`);
-                        console.log("Clique ProdutoCard");
+                        
                     }}
                 />
                 

@@ -1,4 +1,4 @@
-import BotaoComprar from "./BotaoComprar";
+import Botao from "./Botao";
 import Avaliacao from "./AvaliacaoEstrelas";
 import BotaoFavorito from "./BotaoFavorito";
 import IconeFreteGratis from "./IconeFreteGratis";
@@ -32,8 +32,6 @@ function ProdutoInfo({ produto }) {
     } = produto; 
 
     const { adicionarProduto} = useCarrinho();
-    
-    console.log(useCarrinho());
 
     const { mostrarToast } = useToast();
 
@@ -56,7 +54,9 @@ function ProdutoInfo({ produto }) {
 
                             {freteGratis && <IconeFreteGratis/>}
 
-                            <BotaoFavorito />
+                            <BotaoFavorito
+                                produto={produto}
+                            />
 
                         </div>
 
@@ -86,11 +86,11 @@ function ProdutoInfo({ produto }) {
                        
 
                         <div className="produto-info-botao">
-                            <BotaoComprar 
+                            <Botao
                                 texto="Comprar" 
                                 onClick={() =>{
-                                    console.log("Clique ProdutoInfo");
                                     adicionarProduto(produto);
+                                    mostrarToast( `${produto.nome} adicionado ao carrinho`);
                                 }}
                                 
                             />   

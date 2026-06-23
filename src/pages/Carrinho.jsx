@@ -1,4 +1,5 @@
 import Breadcrumb from "../components/Breadcrumb";
+import BotaoVoltar from "../components/BotaoVoltar";
 import EstadoVazio from "../components/EstadoVazio";
 import CarrinhoLista from "../components/CarrinhoLista";
 import CarrinhoResumo from "../components/CarrinhoResumo";
@@ -32,12 +33,11 @@ function Carrinho() {
                     descricao="Adicione produtos para continuar sua compra."
                 />
 
-                <Link 
+                <BotaoVoltar 
                     to="/"
-                    className="botao-detalhe-voltar"
-                >
-                    ← Voltar para a loja
-                </Link>
+                    texto="Home"
+                />  
+
 
             </section>
         );
@@ -56,7 +56,9 @@ function Carrinho() {
                             texto: "Carrinho"
                         }
                     ]}
-                />            
+                />
+
+                <BotaoVoltar />     
 
                 <h1 className="pagina-titulo">
                     Meu Carrinho
